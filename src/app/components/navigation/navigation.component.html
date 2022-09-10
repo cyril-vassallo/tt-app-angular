@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg bg-light" [hidden]="!isAuth">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" *ngFor="let item of navigation" >
+            <a routerLink="{{item.path}}" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="handleNavItemClick($event)" class="nav-link" href="#{{ item.componentId }}">{{ item.label }} </a>
+            </li>   
+        </ul>
+        <div class="d-flex justify-content-end">
+            <div class="nav-item">
+                <button (click)="onLogoutClick()" class="btn btn-outline-danger" type="button">Logout</button>
+            </div>
+        </div>         
+        </div>
+    </div>
+</nav>

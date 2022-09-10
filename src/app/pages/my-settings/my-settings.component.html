@@ -1,0 +1,18 @@
+<main class="main-my-seetings">
+    <h1 class="text-center m-5 fs-2 fw-semibold text-secondary">My Settings</h1>
+    <p class="text-center m-5 fw-semibold text-secondary"><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Go back to the app</a></p>
+    <div class="card ">
+        <div class="card-header text-center">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a (click)="onClickSubNavItem('params')" [ngClass]="{'nav-link': true, 'active': checkFeatureIsActive('params')}" aria-current="true" href="/my-settings#me">Me</a>
+            </li>
+            <li class="nav-item">
+                <a (click)="onClickSubNavItem('github')" [ngClass]="{'nav-link': true, 'active': checkFeatureIsActive('github') }" aria-current="true" href="/my-settings#github">Wire GitHub</a>
+            </li>
+            </ul>
+        </div>
+        <app-params [user]="userState" [isFeatureActive]="checkFeatureIsActive('params')"></app-params>
+        <app-github [user]="userState" [isFeatureActive]="checkFeatureIsActive('github')"></app-github>
+    </div>
+</main>

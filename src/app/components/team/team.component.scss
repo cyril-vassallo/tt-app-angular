@@ -1,0 +1,27 @@
+.app-team {
+  .app-team-container {
+    overflow-x: auto;
+
+    // special css block - change chrome scroll bar style
+    &::-webkit-scrollbar {
+      height: 6px;
+      background: lightgray;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #000;
+    }
+    // special css block - change chrome scroll bar style
+
+    .app-team-partner {
+      img {
+        border-radius: 50%;
+        width: 8rem;
+        align-self: center;
+      }
+      .card-title-2 {
+        font-size: 1rem;
+      }
+    }
+  }
+}

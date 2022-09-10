@@ -1,0 +1,19 @@
+<div *ngFor="let task of tasks" class="container app-daily-task-component card my-3 shadow p-4 bg-light" style="overflow: hidden;">
+    <div class="d-flex">
+        <div class="m-3">
+            <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo}}.jpg" class="card-img-top" alt="this person do not exist"/>
+            <p *ngIf="getUser().firstName" class="text-center"> {{ getUser().firstName}}</p>
+        </div>
+        <div class="m-3">
+            <p class="text-primary fs-5">Date:
+                {{ task.date}}
+                <a href="{{ commit.url}}" *ngFor="let commit of task.commits" class="badge text-bg-success mx-2  text-truncate">{{ commit.hash }}</a>
+            </p>
+            <ul>
+                <li *ngFor="let item of task.list" class="text-secondary">
+                    {{ item }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

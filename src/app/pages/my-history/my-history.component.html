@@ -1,0 +1,17 @@
+<main class="main-my-history">
+    <app-navigation [isAuth]="isAuthState" [handleNavItemClick]="onClickNavItem" [logout]="logout"></app-navigation>
+    <h1 class="text-center m-5 fs-1 fw-semibold"><span class="text-warning">Taski</span><span class="text-primary">Team</span></h1>
+    <div *ngIf="!isAuthState && !isSigningUpState" id="app-login">
+        <app-login [handleLogin]="login" [user]="userState" [handleShowSignUp]="showSignUp"></app-login>
+    </div>
+    <div *ngIf="isSigningUpState" id="app-sign-up">
+        <app-sign-up [handleShowSignUp]="showSignUp"></app-sign-up>
+    </div>
+    <div *ngIf="isAuthState" id="app-my-history" >
+        <app-profile [user]="userState" [handleLoadUserTasks]="loadUserTasks"></app-profile>
+        <app-team [users]="usersState" [handleTeamPartnerTasks]="loadUserTasks"></app-team>
+        <app-form-button  [handleToggleForm]="toggleFormState" [handleSyncGithub]="syncGitTasks" [isFormDisplayed]="formDisplayState" [teamPartner]="teamPartnerState"></app-form-button>
+        <app-task-form *ngIf="isFormShouldDisplayed()" [user]="userState" [tasks]="tasksState" [handleTasksState]="updateTasksState" ></app-task-form>
+        <app-daily-task [tasks]="tasksState" [user]="userState" [teamPartner]="teamPartnerState"></app-daily-task>
+    </div>
+</main>
