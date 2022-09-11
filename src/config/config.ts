@@ -17,5 +17,5 @@ export const constant = {
 }
 
 if (environment.production) {
-    constant.API_URL =  'https://api-taskiteam.herokuapp.com/'
+    constant.API_URL =  'https://api-taskiteam.herokuapp.com'
 }
