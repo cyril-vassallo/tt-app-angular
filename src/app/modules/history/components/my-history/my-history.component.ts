@@ -3,11 +3,11 @@ import {
   UserInterface,
   TaskInterface,
   GithubInterface
-} from '../../Interfaces/Interfaces';
-import { TaskService } from '../../services/task.service';
-import { UserService } from '../../services/user.service';
-import { GithubService } from '../../services/github.service';
-import { TasksAndMeta } from '../../types/types';
+} from '../../../../Interfaces/Interfaces';
+import { TaskService } from '../../../../services/task.service';
+import { UserService } from '../../../../services/user.service';
+import { GithubService } from '../../../../services/github.service';
+import { TasksAndMeta } from '../../../../types/types';
 import { Subscription } from 'rxjs';
 
 

@@ -8,7 +8,7 @@ import {
 } from 'src/app/Interfaces/Interfaces';
 import { TaskAndMeta } from 'src/app/types/types';
 import { find, Subscription } from 'rxjs';
-import { TaskService } from '../../services/task.service';
+import { TaskService } from '../../../../services/task.service';
 
 
 @Component({

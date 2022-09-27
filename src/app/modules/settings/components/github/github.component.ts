@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserInterface, GithubInterface } from '../../Interfaces/Interfaces';
-import { GithubService } from '../../services/github.service';
+import { UserInterface, GithubInterface } from '../../../../Interfaces/Interfaces';
+import { GithubService } from '../../../../services/github.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 

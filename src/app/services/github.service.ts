@@ -17,7 +17,7 @@ export class GithubService {
     .pipe(
       map( (_observable: any) => {
         return _observable.data as GithubInterface 
-      })
+      }),
     )
   }
 
@@ -27,7 +27,7 @@ export class GithubService {
       .pipe(
         map( (_observable: any) => {
           return _observable.data as GithubInterface 
-        })
+        }),
       )
     }
 
@@ -40,7 +40,7 @@ export class GithubService {
       }),
       catchError((err: any) => {
         return of(null);
-      })
+      }),
     );
   }
 
@@ -49,7 +49,7 @@ export class GithubService {
     return this.http.get<any>(constant.API_GITHUB + constant.REPOS  + '/' + github.owner + '/' + github.repository + constant.BRANCHES + '/' + github.branch)
       .pipe(
         catchError(err => of({status : err.status}))
-      )
+      );
   }
 
 }

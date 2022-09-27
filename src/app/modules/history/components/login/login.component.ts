@@ -4,7 +4,7 @@ import {
   LoginFormInterface,
   UserInterface,
   TaskInterface,
-} from '../../Interfaces/Interfaces';
+} from '../../../../Interfaces/Interfaces';
 import { Subscription } from 'rxjs';
 
 
