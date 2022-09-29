@@ -5,7 +5,7 @@ import { GithubComponent } from './components/github/github.component';
 import { ParamsComponent } from './components/params/params.component';
 import { LoaderComponent } from './components/loader/loader.component';
 
-const component = [
+const components = [
   MySettingsComponent,
   GithubComponent,
   ParamsComponent,
@@ -14,7 +14,7 @@ const component = [
 
 @NgModule({
   declarations: [
-      ...component
+      ...components
   ],
   imports: [  
     CoreModule,

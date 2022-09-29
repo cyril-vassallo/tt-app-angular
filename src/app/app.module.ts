@@ -8,7 +8,7 @@ import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 import { GithubService } from './services/github.service';
 
-const services = [
+const providers = [
   UserService,
   TaskService, 
   GithubService,
@@ -23,7 +23,7 @@ const services = [
     HistoryModule,
     SettingsModule,
   ],
-  providers: [ ...services ],
+  providers: [ ...providers ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
