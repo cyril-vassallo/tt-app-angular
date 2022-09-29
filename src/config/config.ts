@@ -9,7 +9,7 @@ export const constant = {
     FIRST: '/first',
     ALL :'/all',
     REPOS : '/repos',
-    BRANCHES: '/branches/',
+    BRANCHES: '/branches',
     LOGIN: '/login',
     USER: '/user',
     TASK: '/task',
