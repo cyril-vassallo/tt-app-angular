@@ -7,9 +7,12 @@ import { HistoryModule } from './modules/history/app.history.module';
 import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 import { GithubService } from './services/github.service';
-import { NavigationService } from './services/navigation.service';
 
-
+const services = [
+  UserService,
+  TaskService, 
+  GithubService,
+];
 
 @NgModule({
   declarations: [
@@ -17,10 +20,10 @@ import { NavigationService } from './services/navigation.service';
   ],
   imports: [  
     AppRoutingModule,
+    HistoryModule,
     SettingsModule,
-    HistoryModule
   ],
-  providers: [UserService, TaskService, GithubService, NavigationService],
+  providers: [ ...services ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
