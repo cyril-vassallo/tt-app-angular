@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { UserService } from '../../../../shared/services/user.service';
 import { UserInterface } from '../../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   errorMessage: string = '';
   isSignUpFailed: boolean = false;
 
-  @Input() handleShowSignUp!: (isShown: boolean) => void;
+  @Output() onShowSignUpEvent = new EventEmitter<boolean>();
 
   subscriptions: Subscription = new Subscription();
 
@@ -52,7 +52,7 @@ export class SignUpComponent implements OnInit {
         this.userService
           .createUser(user)
           .subscribe((_observer: UserInterface) => {
-            this.handleShowSignUp(false);
+            this.onShowSignUpEvent.emit(false);
           })
       );
     } else {

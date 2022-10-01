@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { UserInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
@@ -10,8 +10,8 @@ export class FormButtonComponent implements OnChanges {
   @Input() buttonTextOpenForm: string = 'Archive today tasks!';
   @Input() buttonTextSyncGithub: string = 'Sync today task with git!';
   @Input() isFormDisplayed: boolean = false;
-  @Input() handleToggleForm!: () => void;
-  @Input() handleSyncGithub!: () => void;
+  @Output() onToggleFormEvent = new EventEmitter<void>();
+  @Input() onSyncGithubEvent = new EventEmitter<void>();
   @Input() teamPartner!: UserInterface | null;
   disabledSate: boolean = true;
 
@@ -26,10 +26,10 @@ export class FormButtonComponent implements OnChanges {
   // ----- Component methods----- //
 
   onOpenFormClick(): void {
-    this.handleToggleForm();
+    this.onToggleFormEvent.emit();
   }
 
   onSyncGithubClick(): void {
-    this.handleSyncGithub();
+    this.onSyncGithubEvent.emit();
   }
 }

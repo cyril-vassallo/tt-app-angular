@@ -22,8 +22,7 @@ export class LoginComponent implements OnDestroy {
 
 
   @Output() onLoginEvent = new EventEmitter<UserInterface | null >();
-  @Input() handleShowSignUp!: (isShown: boolean) => void;
-  @Input() handleTasksList!: (tasks: TaskInterface[] | null) => void;
+  @Output() onShowSignUpEvent = new EventEmitter<boolean>();
   @Input() user!: UserInterface | null;
 
   subscriptions: Subscription = new Subscription();
@@ -57,6 +56,6 @@ export class LoginComponent implements OnDestroy {
   }
 
   onShowSignUpClick(): void {
-    this.handleShowSignUp(true);
+    this.onShowSignUpEvent.emit(true);
   }
 }

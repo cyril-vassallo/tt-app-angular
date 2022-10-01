@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UserInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
@@ -8,11 +8,11 @@ import { UserInterface } from '../../../../shared/interfaces/interfaces';
 })
 export class TeamComponent {
   @Input() users: UserInterface[] | null = null;
-  @Input() handleTeamPartnerTasks!: (teamPartner: UserInterface) => void;
+  @Output() onTeamPartnerTasksEvent = new EventEmitter<UserInterface>();
 
   // ----- Component methods----- //
 
   onTeamPartnerClick(teamPartner: UserInterface): void {
-    this.handleTeamPartnerTasks(teamPartner);
+    this.onTeamPartnerTasksEvent.emit(teamPartner);
   }
 }

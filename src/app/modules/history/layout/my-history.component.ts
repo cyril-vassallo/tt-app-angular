@@ -38,12 +38,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     private taskService: TaskService,
     private userService: UserService,
     private githubService: GithubService
-  ) {
-    this.toggleFormState = this.toggleFormState.bind(this);
-    this.loadUserTasks = this.loadUserTasks.bind(this);
-    this.syncGitTasks = this.syncGitTasks.bind(this);
-    this.showSignUp = this.showSignUp.bind(this);
-  }
+  ) {}
 
   // ----- Component lifecycle methods ----- //
 
@@ -140,7 +135,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.updateUserState(user);
     this.validAuthentication();
     this.loadUsers();
-    this.loadUserTasks(user);
+    this.onLoadUserTasks(user);
     this.loadUserGithub();
   }
 
@@ -156,11 +151,11 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.tasksState = tasks;
   }
 
-  toggleFormState(): void {
+  onToggleFormState(): void {
     this.formDisplayState = !this.formDisplayState;
   }
 
-  loadUserTasks(user: UserInterface | null) {
+  onLoadUserTasks(user: UserInterface | null) {
     if (this.userState !== null && this.isAuthState && user) {
       if (this.userState !== user) {
         this.formDisplayState = false;
@@ -183,13 +178,13 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  syncGitTasks(): void {
+  onSyncGitTasks(): void {
     console.log('sync...');
     console.log(this.githubState);
     //TODO: parse all commits and message from github api and update tasksSate
   }
 
-  showSignUp(isShown: boolean): void {
+  onShowSignUp(isShown: boolean): void {
     this.isSigningUpState = isShown;
   }
 }
