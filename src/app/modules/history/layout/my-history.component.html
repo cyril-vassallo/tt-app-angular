@@ -2,7 +2,7 @@
   <app-navigation
     [isAuth]="isAuthState"
     [handleNavItemClick]="onClickNavItem"
-    (onLogoutEvent)="onLogout"
+    (onLogoutEvent)="onLogout()"
   ></app-navigation>
   <h1 class="text-center m-5 fs-1 fw-semibold">
     <span class="text-warning">Taski</span
@@ -29,15 +29,15 @@
     ></app-team>
     <app-form-button
       [teamPartner]="teamPartnerState"
-      (onToggleFormEvent)="(onToggleFormState)"
-      (onSyncGithubEvent)="(onSyncGitTasks)"
+      (onToggleFormEvent)="onToggleFormState()"
+      (onSyncGithubEvent)="onSyncGitTasks()"
       [isFormDisplayed]="formDisplayState"
     ></app-form-button>
     <app-task-form
       *ngIf="isFormShouldDisplayed()"
       [user]="userState"
       [tasks]="tasksState"
-      (onTasksStateEvent)="(onTasksStateUpdate)"
+      (onTasksStateEvent)="onTasksStateUpdate($event)"
     ></app-task-form>
     <app-daily-task
       [tasks]="tasksState"
