@@ -39,10 +39,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private githubService: GithubService
   ) {
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.updateUserState = this.updateUserState.bind(this);
-    this.updateTasksState = this.updateTasksState.bind(this);
     this.toggleFormState = this.toggleFormState.bind(this);
     this.loadUserTasks = this.loadUserTasks.bind(this);
     this.syncGitTasks = this.syncGitTasks.bind(this);
@@ -127,7 +123,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   // ----- Child component triggered methods ----- //
 
-  login(user: UserInterface | null): void {
+  onLogin(user: UserInterface | null): void {
     if (user != null) {
       this.initHistoryFeatureStates(user);
       this.userService.saveUserToLocalStorage(JSON.stringify(user));
@@ -136,7 +132,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout(): void {
+  onLogout(): void {
     this.restStates();
   }
 
@@ -156,7 +152,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateTasksState(tasks: TaskInterface[] | null) {
+  onTasksStateUpdate(tasks: TaskInterface[] | null) {
     this.tasksState = tasks;
   }
 

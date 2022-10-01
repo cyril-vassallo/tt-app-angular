@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { NavigationItemInterface } from '../../interfaces/history.interface';
 import { NavigationService } from '../../services/navigation.service';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   @Input() isAuth!: boolean;
   @Input() handleNavItemClick!: (event?: MouseEvent) => void;
-  @Input() logout!: () => void;
+  @Output() onLogoutEvent = new EventEmitter<void>();
 
   navigationState: NavigationItemInterface[] = [];
   subscriptions: Subscription = new Subscription();
@@ -37,6 +37,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   // ----- Component methods----- //
 
   onLogoutClick(): void {
-    this.logout();
+    this.onLogoutEvent.emit();
   }
 }

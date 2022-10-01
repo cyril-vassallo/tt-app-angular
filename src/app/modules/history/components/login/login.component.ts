@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import {
   UserInterface,
@@ -20,7 +20,8 @@ export class LoginComponent implements OnDestroy {
   errorMsg: string = '';
   tasks: TaskInterface[] | null = null;
 
-  @Input() handleLogin!: (user: UserInterface | null) => void;
+
+  @Output() onLoginEvent = new EventEmitter<UserInterface | null >();
   @Input() handleShowSignUp!: (isShown: boolean) => void;
   @Input() handleTasksList!: (tasks: TaskInterface[] | null) => void;
   @Input() user!: UserInterface | null;
@@ -49,7 +50,7 @@ export class LoginComponent implements OnDestroy {
           this.user = _observer;
           this.errorMessage = '';
           this.isLoginFailed = false;
-          this.handleLogin(this.user);
+          this.onLoginEvent.emit(this.user);
         }
       })
     );

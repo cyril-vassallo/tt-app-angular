@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  OnDestroy,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import format from 'date-fns/format';
 import { UserInterface } from 'src/app/shared/interfaces/interfaces';
@@ -21,7 +28,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   @Input() hasTask: boolean = false;
   @Input() tasks: TaskInterface[] | null = null;
   @Input() user: UserInterface | null = null;
-  @Input() handleTasksState!: (tasks: TaskInterface[] | null) => void;
+  @Output() onTasksStateEvent = new EventEmitter<TaskInterface[] | null>();
 
   task: TaskInterface | null = null;
   isTodayTaskExist: boolean = false;
@@ -139,7 +146,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     }
 
     if (this.tasks) {
-      this.handleTasksState(this.tasks);
+      this.onTasksStateEvent.emit(this.tasks);
       this.resetInputsState();
       this.hasTask = true;
     }
