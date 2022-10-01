@@ -1,7 +1,6 @@
 import {
   MetaInterface,
   UserInterface,
-
   GithubInterface,
   TaskInterface,
 } from '../interfaces/interfaces';
@@ -21,14 +20,12 @@ export type GithubAndMeta = {
   meta: MetaInterface;
 };
 
-
 export type TasksAndMeta = {
   data: TaskInterface[];
   meta: MetaInterface;
-  };
-    
-  export type TaskAndMeta = {
+};
+
+export type TaskAndMeta = {
   data: TaskInterface;
   meta: MetaInterface;
-  };
-  
+};

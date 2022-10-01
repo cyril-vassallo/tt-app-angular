@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from '../core/app.core.module';
 import { NavigationService } from './services/navigation.service';
 
-import { MyHistoryComponent } from './components/my-history/my-history.component';
+import { MyHistoryComponent } from './base-component/my-history.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DailyTaskComponent } from './components/daily-task/daily-task.component';
