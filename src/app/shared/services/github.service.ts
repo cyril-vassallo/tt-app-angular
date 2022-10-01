@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { constant } from '../../../config/config';
-import { UserInterface, GithubInterface } from '../interfaces/shared.Interfaces';
+import { UserInterface, GithubInterface } from '../interfaces/interfaces';
 import { map, Observable } from 'rxjs';
 import { catchError, of, tap } from 'rxjs';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface } from 'src/app/shared/interfaces/shared.Interfaces';
+import { UserInterface } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-my-settings',

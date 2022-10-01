@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserInterface } from 'src/app/shared/interfaces/shared.Interfaces';
-import { TaskInterface } from '../../../../shared/interfaces/shared.Interfaces';
+import { UserInterface } from 'src/app/shared/interfaces/interfaces';
+import { TaskInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-daily-task',

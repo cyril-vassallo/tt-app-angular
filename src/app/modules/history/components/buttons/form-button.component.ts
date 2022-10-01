@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { UserInterface } from '../../../../shared/interfaces/shared.Interfaces';
+import { UserInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-form-button',

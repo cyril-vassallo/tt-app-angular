@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import format from 'date-fns/format';
-import { UserInterface } from 'src/app/shared/interfaces/shared.Interfaces';
+import { UserInterface } from 'src/app/shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { TaskService } from '../../../../shared/services/task.service';
 import {
   TaskInterface,
   CommitInterface,
-} from '../../../../shared/interfaces/shared.Interfaces';
-import { TaskAndMeta } from '../../../../shared/types/shared.types';
+} from '../../../../shared/interfaces/interfaces';
+import { TaskAndMeta } from '../../../../shared/types/types';
 
 @Component({
   selector: 'app-task-form',

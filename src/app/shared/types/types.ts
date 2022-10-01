@@ -4,7 +4,7 @@ import {
 
   GithubInterface,
   TaskInterface,
-} from '../interfaces/shared.Interfaces';
+} from '../interfaces/interfaces';
 
 export type UsersAndMeta = {
   data: UserInterface[];

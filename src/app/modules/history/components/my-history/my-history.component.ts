@@ -2,13 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   UserInterface,
   GithubInterface,
-} from '../../../../shared/interfaces/shared.Interfaces';
+} from '../../../../shared/interfaces/interfaces';
 import { TaskService } from '../../../../shared/services/task.service';
 import { UserService } from '../../../../shared/services/user.service';
 import { GithubService } from '../../../../shared/services/github.service';
 import { Subscription } from 'rxjs';
-import { TaskInterface } from '../../../../shared/interfaces/shared.Interfaces';
-import { TasksAndMeta } from '../../../../shared/types/shared.types';
+import { TaskInterface } from '../../../../shared/interfaces/interfaces';
+import { TasksAndMeta } from '../../../../shared/types/types';
 
 @Component({
   selector: 'app-my-history',

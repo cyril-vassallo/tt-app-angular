@@ -3,7 +3,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import {
   UserInterface,
   TaskInterface,
-} from '../../../../shared/interfaces/shared.Interfaces';
+} from '../../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { LoginFormInterface } from '../../interfaces/history.interface';
 

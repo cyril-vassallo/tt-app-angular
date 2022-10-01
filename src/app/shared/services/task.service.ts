@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { constant } from '../../../config/config';
-import { UserInterface, TaskInterface } from '../interfaces/shared.Interfaces';
+import { UserInterface, TaskInterface } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { IdAndMeta,  } from '../../modules/history/types/history.types';
-import { TaskAndMeta, TasksAndMeta } from '../types/shared.types';
+import { TaskAndMeta, TasksAndMeta } from '../types/types';
 
 
 @Injectable()

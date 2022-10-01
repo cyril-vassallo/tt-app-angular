@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {
   UserInterface,
   GithubInterface,
-} from '../../../../shared/interfaces/shared.Interfaces';
+} from '../../../../shared/interfaces/interfaces';
 import { GithubService } from '../../../../shared/services/github.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';

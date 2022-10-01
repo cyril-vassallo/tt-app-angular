@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../../../../shared/services/user.service';
-import { UserInterface } from '../../../../shared/interfaces/shared.Interfaces';
+import { UserInterface } from '../../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { SignUpFormInterface } from '../../interfaces/history.interface';
 

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { UserInterface } from '../../../../shared/interfaces/shared.Interfaces';
+import { UserInterface } from '../../../../shared/interfaces/interfaces';
 import { UserService } from '../../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TaskService } from '../../../../shared/services/task.service';
-import { TaskAndMeta } from '../../../../shared/types/shared.types';
+import { TaskAndMeta } from '../../../../shared/types/types';
 
 @Component({
   selector: 'app-params',
