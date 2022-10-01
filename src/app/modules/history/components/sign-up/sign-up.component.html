@@ -1,30 +1,68 @@
-<form #signUpForm="ngForm" (ngSubmit)="onSubmitSignup(signUpForm.value)" class="app-sign-up d-flex flex-column justify-content-center container-sm">
-    <div class="mb-3 app-input">
-        <label for="app-firstname" class="form-label text-primary">First name</label>
-        <input type="text" name="firstName" id="app-firstname" class="form-control" [ngModel]="firstName"/>
+<form
+  #signUpForm="ngForm"
+  (ngSubmit)="onSubmitSignup(signUpForm.value)"
+  class="app-sign-up d-flex flex-column justify-content-center container-sm"
+>
+  <div class="mb-3 app-input">
+    <label for="app-firstname" class="form-label text-primary"
+      >First name</label
+    >
+    <input
+      type="text"
+      name="firstName"
+      id="app-firstname"
+      class="form-control"
+      [ngModel]="firstName"
+    />
+  </div>
+  <div class="mb-3 app-input">
+    <label for="app-lastname" class="form-label text-primary">Last name</label>
+    <input
+      type="text"
+      name="lastName"
+      id="app-lastname"
+      class="form-control"
+      [ngModel]="lastName"
+    />
+  </div>
+  <div class="mb-3 app-input">
+    <label for="app-email" class="form-label text-primary">Email address</label>
+    <input
+      type="email"
+      name="email"
+      id="app-email"
+      class="form-control"
+      [ngModel]="email"
+    />
+  </div>
+  <div class="mb-3 app-input">
+    <label for="app-password" class="form-label text-primary">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="app-password"
+      class="form-control"
+      [ngModel]="password"
+    />
+  </div>
+  <div class="mb-3 app-input">
+    <label for="app-password-confirm" class="form-label text-primary"
+      >Password Confirm</label
+    >
+    <input
+      type="password"
+      name="passwordConfirm"
+      id="app-password-confirm"
+      class="form-control"
+      [ngModel]="passwordConfirm"
+    />
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="nav-item">
+      <button type="submit" class="btn btn-outline-success">Sign up</button>
     </div>
-    <div class="mb-3 app-input">
-        <label for="app-lastname" class="form-label text-primary">Last name</label>
-        <input type="text" name="lastName" id="app-lastname" class="form-control" [ngModel]="lastName"/>
-    </div>
-    <div class="mb-3 app-input">
-        <label for="app-email" class="form-label text-primary">Email address</label>
-        <input type="email" name="email" id="app-email" class="form-control" [ngModel]="email"/>
-    </div>
-    <div class="mb-3 app-input">
-        <label for="app-password" class="form-label text-primary">Password</label>
-        <input type="password" name="password" id="app-password" class="form-control" [ngModel]="password"/>
-    </div>
-    <div class="mb-3 app-input">
-        <label for="app-password-confirm" class="form-label text-primary">Password Confirm</label>
-        <input type="password" name="passwordConfirm" id="app-password-confirm" class="form-control" [ngModel]="passwordConfirm"/>
-    </div>
-    <div class="d-flex justify-content-center">
-        <div class="nav-item">
-            <button type="submit" class="btn btn-outline-success">Sign up</button>
-        </div>
-    </div>
+  </div>
 </form>
 <div [hidden]="!isSignUpFailed" class="alert alert-danger text-center m-5">
-    {{ errorMessage }}
+  {{ errorMessage }}
 </div>

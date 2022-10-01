@@ -1,15 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { UserInterface } from '../../../../Interfaces/Interfaces';
+import { UserInterface } from '../../../../shared/interfaces/shared.Interfaces';
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
 })
-export class TeamComponent  {
+export class TeamComponent {
   @Input() users: UserInterface[] | null = null;
   @Input() handleTeamPartnerTasks!: (teamPartner: UserInterface) => void;
-
 
   // ----- Component methods----- //
 

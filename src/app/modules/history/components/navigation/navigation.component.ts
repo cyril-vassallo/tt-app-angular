@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { NavigationItemInterface } from '../../../../Interfaces/Interfaces';
-import { NavigationService } from '../../../../services/navigation.service';
+import { NavigationItemInterface } from '../../interfaces/history.interface';
+import { NavigationService } from '../../services/navigation.service';
 import { Subscription } from 'rxjs';
-import { NavigationAndMeta } from '../../../../types/types';
+import { NavigationAndMeta } from '../../types/history.types';
 
 @Component({
   selector: 'app-navigation',

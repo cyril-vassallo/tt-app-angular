@@ -10,14 +10,10 @@ const components = [
   GithubComponent,
   ParamsComponent,
   LoaderComponent,
-]
+];
 
 @NgModule({
-  declarations: [
-      ...components
-  ],
-  imports: [  
-    CoreModule,
-  ],
+  declarations: [...components],
+  imports: [CoreModule],
 })
 export class SettingsModule {}

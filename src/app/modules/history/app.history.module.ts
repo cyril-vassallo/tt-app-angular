@@ -1,6 +1,6 @@
-import { NgModule, Component } from '@angular/core';
-import  { CoreModule }  from '../core/app.core.module';
-import { NavigationService } from './../../services/navigation.service';
+import { NgModule } from '@angular/core';
+import { CoreModule } from '../core/app.core.module';
+import { NavigationService } from './services/navigation.service';
 
 import { MyHistoryComponent } from './components/my-history/my-history.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -22,17 +22,11 @@ const components = [
   TeamComponent,
   FormButtonComponent,
   SignUpComponent,
-]
+];
 
 @NgModule({
-  declarations: [
-    ...components
-  ],
-  imports: [  
-    CoreModule,
-  ],
-  providers: [
-    NavigationService,
-  ]
+  declarations: [...components],
+  imports: [CoreModule],
+  providers: [NavigationService],
 })
 export class HistoryModule {}

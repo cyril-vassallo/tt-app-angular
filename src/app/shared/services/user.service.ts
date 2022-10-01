@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { constant } from '../../config/config';
-import { LoginFormInterface, UserInterface, ErrorInterface } from '../Interfaces/Interfaces';
+import { constant } from '../../../config/config';
+import { UserInterface, ErrorInterface } from '../interfaces/shared.Interfaces';
 import { Observable, catchError, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoginFormInterface } from '../../modules/history/interfaces/history.interface';
 
 
 @Injectable()

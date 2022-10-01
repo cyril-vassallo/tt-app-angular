@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInterface } from 'src/app/Interfaces/Interfaces';
+import { UserInterface } from 'src/app/shared/interfaces/shared.Interfaces';
 
 @Component({
   selector: 'app-my-settings',
@@ -19,13 +19,13 @@ export class MySettingsComponent implements OnInit {
     }
   }
 
-// ----- Component methods ----- //
+  // ----- Component methods ----- //
 
-  onClickSubNavItem(featureName: string){
+  onClickSubNavItem(featureName: string) {
     this.currentActiveFeature = featureName;
   }
 
-  checkFeatureIsActive(featureName: string){
-    return this.currentActiveFeature === featureName ? true : false
+  checkFeatureIsActive(featureName: string) {
+    return this.currentActiveFeature === featureName ? true : false;
   }
 }

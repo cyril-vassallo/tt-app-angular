@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { constant } from '../../config/config';
+import { constant } from '../../../../config/config';
 import { Observable } from 'rxjs';
-import { NavigationAndMeta } from '../types/types';
+import { NavigationAndMeta } from '../types/history.types';
 
 @Injectable()
 export class NavigationService {
@@ -10,7 +10,8 @@ export class NavigationService {
 
   // path: /navigation
   public getNavigation(): Observable<NavigationAndMeta> {
-    return this.http.get<NavigationAndMeta>(constant.API_URL + constant.NAVIGATION);
+    return this.http.get<NavigationAndMeta>(
+      constant.API_URL + constant.NAVIGATION
+    );
   }
-
 }

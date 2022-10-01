@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { UserInterface } from '../../../../Interfaces/Interfaces';
+import { UserInterface } from '../../../../shared/interfaces/shared.Interfaces';
 
 @Component({
   selector: 'app-form-button',
@@ -32,5 +32,4 @@ export class FormButtonComponent implements OnChanges {
   onSyncGithubClick(): void {
     this.handleSyncGithub();
   }
-
 }

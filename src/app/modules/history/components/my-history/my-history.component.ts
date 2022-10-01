@@ -1,18 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   UserInterface,
-  TaskInterface,
-  GithubInterface
-} from '../../../../Interfaces/Interfaces';
-import { TaskService } from '../../../../services/task.service';
-import { UserService } from '../../../../services/user.service';
-import { GithubService } from '../../../../services/github.service';
-import { TasksAndMeta } from '../../../../types/types';
+  GithubInterface,
+} from '../../../../shared/interfaces/shared.Interfaces';
+import { TaskService } from '../../../../shared/services/task.service';
+import { UserService } from '../../../../shared/services/user.service';
+import { GithubService } from '../../../../shared/services/github.service';
 import { Subscription } from 'rxjs';
-
-
-
-
+import { TaskInterface } from '../../../../shared/interfaces/shared.Interfaces';
+import { TasksAndMeta } from '../../../../shared/types/shared.types';
 
 @Component({
   selector: 'app-my-history',
@@ -20,7 +16,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./my-history.component.scss'],
 })
 export class MyHistoryComponent implements OnInit, OnDestroy {
-
   isAuthState: boolean = false;
 
   isSigningUpState: boolean = false;
@@ -37,13 +32,12 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   formDisplayState: boolean = false;
 
-  subscriptions: Subscription = new Subscription();  
-
+  subscriptions: Subscription = new Subscription();
 
   constructor(
     private taskService: TaskService,
     private userService: UserService,
-    private githubService: GithubService,
+    private githubService: GithubService
   ) {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -51,46 +45,50 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.updateTasksState = this.updateTasksState.bind(this);
     this.toggleFormState = this.toggleFormState.bind(this);
     this.loadUserTasks = this.loadUserTasks.bind(this);
-    this.syncGitTasks = this.syncGitTasks.bind(this)
+    this.syncGitTasks = this.syncGitTasks.bind(this);
     this.showSignUp = this.showSignUp.bind(this);
   }
 
   // ----- Component lifecycle methods ----- //
 
   ngOnInit() {
-    const serializedUser: string | null = localStorage.getItem('user')
+    const serializedUser: string | null = localStorage.getItem('user');
     if (serializedUser) {
       const user: UserInterface = JSON.parse(serializedUser);
-      this.initHistoryFeatureStates(user)
+      this.initHistoryFeatureStates(user);
     }
   }
 
-  ngOnDestroy(): void  {
+  ngOnDestroy(): void {
     this.subscriptions?.unsubscribe();
   }
 
-
-// ----- Component methods ----- //
+  // ----- Component methods ----- //
 
   validAuthentication(): void {
     this.isAuthState = true;
   }
 
   loadUsers(): void {
-    this.subscriptions.add(this.userService.getAllUsers().subscribe((_observer: UserInterface[]) => {
-      const data = _observer;
-      this.usersState = data.filter((user: UserInterface) => {
-        return user.firstName !== this.userState?.firstName;
-      });
-    }));
+    this.subscriptions.add(
+      this.userService.getAllUsers().subscribe((_observer: UserInterface[]) => {
+        const data = _observer;
+        this.usersState = data.filter((user: UserInterface) => {
+          return user.firstName !== this.userState?.firstName;
+        });
+      })
+    );
   }
 
-  loadUserGithub(): void  {
-
-    if(this.userState !== null) {
-      this.subscriptions.add(this.githubService.getGithubByUser(this.userState).subscribe((_observer: GithubInterface|null) => {
-        this.githubState = _observer;
-      }));
+  loadUserGithub(): void {
+    if (this.userState !== null) {
+      this.subscriptions.add(
+        this.githubService
+          .getGithubByUser(this.userState)
+          .subscribe((_observer: GithubInterface | null) => {
+            this.githubState = _observer;
+          })
+      );
     }
   }
 
@@ -101,7 +99,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.usersState = null;
     this.teamPartnerState = null;
     this.tasksState = null;
-    this.githubState =  null;
+    this.githubState = null;
     this.formDisplayState = false;
 
     localStorage.removeItem('user');
@@ -120,7 +118,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
   }
 
   onClickNavItem(event?: MouseEvent): void {
-    //TODO: check user.role 
+    //TODO: check user.role
   }
 
   saveToLocalStorage(key: string, content: string) {
@@ -131,7 +129,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   login(user: UserInterface | null): void {
     if (user != null) {
-      this.initHistoryFeatureStates(user)
+      this.initHistoryFeatureStates(user);
       this.userService.saveUserToLocalStorage(JSON.stringify(user));
     } else {
       this.restStates();
@@ -158,7 +156,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateTasksState(tasks: TaskInterface[]|null) {
+  updateTasksState(tasks: TaskInterface[] | null) {
     this.tasksState = tasks;
   }
 
@@ -166,7 +164,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.formDisplayState = !this.formDisplayState;
   }
 
-  loadUserTasks(user : UserInterface | null) {
+  loadUserTasks(user: UserInterface | null) {
     if (this.userState !== null && this.isAuthState && user) {
       if (this.userState !== user) {
         this.formDisplayState = false;
@@ -175,17 +173,21 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
         this.teamPartnerState = null;
       }
 
-      this.subscriptions.add(this.taskService.getTasksByUser(user).subscribe((_observer: TasksAndMeta) => {
-        if (_observer.data && _observer.data.length > 0) {
-          this.tasksState = _observer.data;
-        } else {
-          this.tasksState = null;
-        }
-      }));
+      this.subscriptions.add(
+        this.taskService
+          .getTasksByUser(user)
+          .subscribe((_observer: TasksAndMeta) => {
+            if (_observer.data && _observer.data.length > 0) {
+              this.tasksState = _observer.data;
+            } else {
+              this.tasksState = null;
+            }
+          })
+      );
     }
   }
 
-  syncGitTasks(): void  {
+  syncGitTasks(): void {
     console.log('sync...');
     console.log(this.githubState);
     //TODO: parse all commits and message from github api and update tasksSate
@@ -194,5 +196,4 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
   showSignUp(isShown: boolean): void {
     this.isSigningUpState = isShown;
   }
-
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TaskInterface, UserInterface } from 'src/app/Interfaces/Interfaces';
+import { UserInterface } from 'src/app/shared/interfaces/shared.Interfaces';
+import { TaskInterface } from '../../../../shared/interfaces/shared.Interfaces';
 
 @Component({
   selector: 'app-daily-task',
@@ -25,7 +26,6 @@ export class DailyTaskComponent implements OnInit {
     };
   }
 
-
   // ----- Component lifecycle methods ----- //
 
   ngOnInit(): void {
@@ -33,7 +33,6 @@ export class DailyTaskComponent implements OnInit {
       this.user = this.teamPartner;
     }
   }
-
 
   // ----- Component methods----- //
 
