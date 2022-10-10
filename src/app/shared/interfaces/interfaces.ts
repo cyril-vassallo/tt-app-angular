@@ -1,3 +1,5 @@
+import { ChartType, ChartOptions } from 'chart.js';
+
 export interface UserInterface {
   id?: string;
   firstName: string;
@@ -40,4 +42,13 @@ export interface TaskInterface {
 export interface CommitInterface {
   url: string | null | undefined;
   hash: string | null | undefined;
+}
+
+export interface ChartInterface {
+    id: string;
+    title: string;
+    type: ChartType;
+    labels: string[];
+    datasets: any;
+    options: ChartOptions;
 }

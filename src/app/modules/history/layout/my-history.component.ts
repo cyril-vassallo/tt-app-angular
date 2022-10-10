@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 
+
 @Component({
   selector: 'app-my-history',
   templateUrl: './my-history.component.html',
