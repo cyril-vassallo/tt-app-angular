@@ -7,12 +7,11 @@ import { ChartInterface } from '../../../shared/interfaces/interfaces';
   styleUrls: ['./charts.component.scss'],
 })
 export class ChartsComponent implements OnInit {
-
   public barChart: any;
   public bubbleChart: any;
+  public reversedMultiLineChart: any;
 
-  constructor(
-  ) {}
+  constructor() {}
 
   // ----- Component lifecycle methods ----- //
 
@@ -58,48 +57,133 @@ export class ChartsComponent implements OnInit {
       ],
     };
 
-
     this.bubbleChart = {
       id: 'bubble-bar',
       title: 'Bubble Chart',
       type: 'bubble',
       options: {},
-      datasets: [{
-        label: 'First Dataset',
-        data: [{
-          x: 20,
-          y: 30,
-          r: 15
-        }, {
-          x: 40,
-          y: 10,
-          r: 10
-        },{
-          x: 12,
-          y: 25,
-          r: 50
-        }],
-        backgroundColor: 'rgb(255, 99, 132)'
-      },
-      {
-        label: 'Second Dataset',
-        data: [{
-          x: 5,
-          y: 14,
-          r: 25
-        }, {
-          x: 46,
-          y: 20,
-          r: 70
-        },{
-          x: 72,
-          y: 32,
-          r: 12
-        }],
-        backgroundColor: 'rgb(99, 255, 132)'
-      }],
+      datasets: [
+        {
+          label: 'First Dataset',
+          data: [
+            {
+              x: 20,
+              y: 30,
+              r: 15,
+            },
+            {
+              x: 40,
+              y: 10,
+              r: 10,
+            },
+            {
+              x: 12,
+              y: 25,
+              r: 50,
+            },
+          ],
+          backgroundColor: 'rgb(255, 99, 132)',
+        },
+        {
+          label: 'Second Dataset',
+          data: [
+            {
+              x: 5,
+              y: 14,
+              r: 25,
+            },
+            {
+              x: 46,
+              y: 20,
+              r: 70,
+            },
+            {
+              x: 72,
+              y: 32,
+              r: 12,
+            },
+          ],
+          backgroundColor: 'rgb(99, 255, 132)',
+        },
+      ],
     };
 
-
+    // Todo - ajouter le plugins annotation
+    this.reversedMultiLineChart = {
+      id: 'reversed-line',
+      title: 'Grade by regrouping type on 5 last years',
+      type: 'line',
+      options: {
+        plugins: {
+          autocolors: false,
+          annotation: {
+            annotations: {
+              box1: {
+                drawTime: 'beforeDatasetDraw',
+                type: 'box',
+                xMin: 1,
+                xMax: 2,
+                yMin: 1,
+                yMax: 4,
+                backgroundColor: 'rgba(255,88,118,0.5)',
+                borderColor: 'transparent',
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            position: 'top',
+            offset: true,
+          },
+          y: {
+            reverse: true,
+            beginAtZero: false,
+            min: 1,
+            max: 4,
+            offset: true,
+            ticks: {
+              precision: 0,
+            },
+            grid: {
+              display: false,
+            },
+          },
+        },
+      },
+      labels: ['2017', '2018', '2019', '2020', '2021'],
+      datasets: [
+        {
+          label: 'Private',
+          data: [1, 2.3, 3.2, 2, 4],
+          fill: false,
+          borderColor: 'rgba(75, 190, 255, 0.5)',
+          backgroundColor: 'blue',
+          borderWidth: 10,
+          radius: 10,
+          tension: 0,
+        },
+        {
+          label: 'Public',
+          data: [3, 1.3, 3, 3, 2],
+          fill: false,
+          borderColor: 'rgba(190, 255, 75, 0.5)',
+          backgroundColor: 'green',
+          radius: 10,
+          borderWidth: 10,
+          tension: 0,
+        },
+        {
+          label: 'Asso',
+          data: [2, 3.1, 1.2, 3, 2],
+          fill: false,
+          borderColor: 'rgba(255, 190, 75, 0.5)',
+          backgroundColor: 'red',
+          radius: 10,
+          borderWidth: 10,
+          tension: 0,
+        },
+      ],
+    };
   }
 }
