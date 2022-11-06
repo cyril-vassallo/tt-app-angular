@@ -1,3 +1,5 @@
+@import '../../../../app.component.scss';
+
 .navigation-bar {
     font-family:'Gill Sans';
     display: flex;
@@ -10,10 +12,11 @@
     }
 
     .nav-dropdown {
+        z-index: 1;
         position:absolute;
         top: 80px;
-        min-width: 250px;  
-        background-color: rgba($color: #000000, $alpha: 0.95);
+        width: 100%;  
+        background-color: rgba($color: $color-dark, $alpha: 0.95);
         font-size: 1.5rem;
         color: white;
         text-align: center;
@@ -28,3 +31,11 @@
         }
     }
 }
+
+@media (min-width: 680px) { 
+    .navigation-bar {
+        .nav-dropdown {
+            max-width: 250px;  
+        }
+    }
+ }
