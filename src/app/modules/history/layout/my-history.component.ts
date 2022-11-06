@@ -55,7 +55,23 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.subscriptions?.unsubscribe();
   }
 
-  // ----- Component methods ----- //
+  // ----- Component methods onload ----- //
+
+  initHistoryFeatureStates(user: UserInterface): void {
+    this.updateUserState(user);
+    this.validAuthentication();
+    this.loadUsers();
+    this.onLoadUserTasks(user);
+    this.loadUserGithub();
+  }
+
+  updateUsersState(users: UserInterface[] | null) {
+    if (users !== null) {
+      this.usersState = users;
+    } else {
+      this.usersState = null;
+    }
+  }
 
   validAuthentication(): void {
     this.isAuthState = true;
@@ -66,10 +82,33 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
       this.userService.getAllUsers().subscribe((_observer: UserInterface[]) => {
         const data = _observer;
         this.usersState = data.filter((user: UserInterface) => {
-          return user.firstName !== this.userState?.firstName;
+          return user.id !== this.userState?.id;
         });
       })
     );
+  }
+
+  onLoadUserTasks(user: UserInterface | null) {
+    if (this.userState !== null && this.isAuthState && user) {
+      if (this.userState !== user) {
+        this.formDisplayState = false;
+        this.teamPartnerState = { ...user };
+      } else {
+        this.teamPartnerState = null;
+      }
+
+      this.subscriptions.add(
+        this.taskService
+          .getTasksByUser(user)
+          .subscribe((_observer: TasksAndMeta) => {
+            if (_observer.data && _observer.data.length > 0) {
+              this.tasksState = _observer.data;
+            } else {
+              this.tasksState = null;
+            }
+          })
+      );
+    }
   }
 
   loadUserGithub(): void {
@@ -84,6 +123,8 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
+
+
   restStates(): void {
     this.isAuthState = false;
     this.isSigningUpState = false;
@@ -95,14 +136,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.formDisplayState = false;
 
     localStorage.removeItem('user');
-  }
-
-  updateUsersState(users: UserInterface[] | null) {
-    if (users !== null) {
-      this.usersState = users;
-    } else {
-      this.usersState = null;
-    }
   }
 
   isFormShouldDisplayed(): boolean {
@@ -132,13 +165,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.restStates();
   }
 
-  initHistoryFeatureStates(user: UserInterface): void {
-    this.updateUserState(user);
-    this.validAuthentication();
-    this.loadUsers();
-    this.onLoadUserTasks(user);
-    this.loadUserGithub();
-  }
 
   updateUserState(user: UserInterface) {
     if (user !== null) {
@@ -154,29 +180,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   onToggleFormState(): void {
     this.formDisplayState = !this.formDisplayState;
-  }
-
-  onLoadUserTasks(user: UserInterface | null) {
-    if (this.userState !== null && this.isAuthState && user) {
-      if (this.userState !== user) {
-        this.formDisplayState = false;
-        this.teamPartnerState = { ...this.userState };
-      } else {
-        this.teamPartnerState = null;
-      }
-
-      this.subscriptions.add(
-        this.taskService
-          .getTasksByUser(user)
-          .subscribe((_observer: TasksAndMeta) => {
-            if (_observer.data && _observer.data.length > 0) {
-              this.tasksState = _observer.data;
-            } else {
-              this.tasksState = null;
-            }
-          })
-      );
-    }
   }
 
   onSyncGitTasks(): void {
