@@ -5,7 +5,7 @@ import {
   TaskInterface,
 } from '../../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
-import { LoginFormInterface } from '../../interfaces/history.interface';
+import { LoginFormInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-login',

@@ -1,8 +1,8 @@
 import { Component, Input, Output, OnInit, OnDestroy, EventEmitter } from '@angular/core';
-import { NavigationItemInterface } from '../../interfaces/history.interface';
-import { NavigationService } from '../../services/navigation.service';
-import { Subscription } from 'rxjs';
-import { NavigationAndMeta } from '../../types/history.types';
+import { NavigationItemInterface  } from '../../../../shared/interfaces/interfaces';
+import { NavigationAndMeta  } from '../../../../shared/types/types';
+import { NavigationService } from '../../../../shared/services/navigation.service';
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-navigation',
@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   @Input() isAuth!: boolean;
   @Input() handleNavItemClick!: (event?: MouseEvent) => void;
   @Output() onLogoutEvent = new EventEmitter<void>();
+  isNavDisplayed: boolean = false;
 
   navigationState: NavigationItemInterface[] = [];
   subscriptions: Subscription = new Subscription();
@@ -38,5 +39,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   onLogoutClick(): void {
     this.onLogoutEvent.emit();
+  }
+
+  onBurgerClick(): void {
+    this.isNavDisplayed = !this.isNavDisplayed;
   }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { constant } from '../../../../config/config';
+import { constant } from '../../../config/config';
 import { Observable } from 'rxjs';
-import { NavigationAndMeta } from '../types/history.types';
+import { NavigationAndMeta } from '../types/types';
 
 @Injectable()
 export class NavigationService {

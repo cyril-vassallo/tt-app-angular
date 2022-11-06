@@ -2,7 +2,7 @@ import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { UserService } from '../../../../shared/services/user.service';
 import { UserInterface } from '../../../../shared/interfaces/interfaces';
 import { Subscription } from 'rxjs';
-import { SignUpFormInterface } from '../../interfaces/history.interface';
+import { SignUpFormInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-sign-up',

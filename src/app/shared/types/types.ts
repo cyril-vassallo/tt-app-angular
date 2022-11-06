@@ -3,7 +3,9 @@ import {
   UserInterface,
   GithubInterface,
   TaskInterface,
+  NavigationItemInterface,
 } from '../interfaces/interfaces';
+
 
 export type UsersAndMeta = {
   data: UserInterface[];
@@ -27,5 +29,15 @@ export type TasksAndMeta = {
 
 export type TaskAndMeta = {
   data: TaskInterface;
+  meta: MetaInterface;
+};
+
+export type NavigationAndMeta = {
+  data: NavigationItemInterface[];
+  meta: MetaInterface;
+};
+
+export type IdAndMeta = {
+  data: number;
   meta: MetaInterface;
 };

@@ -1,5 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { CoreModule } from '../core/app.core.module';
+import { CoreModule } from '../core/core.module';
 import { MySettingsComponent } from './layout/my-settings.component';
 import { GithubComponent } from './components/github/github.component';
 import { ParamsComponent } from './components/params/params.component';

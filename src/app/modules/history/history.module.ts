@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from '../core/app.core.module';
-import { NavigationService } from './services/navigation.service';
-
+import { CoreModule } from '../core/core.module';
+import { NavigationService } from '../../shared/services/navigation.service'
 import { MyHistoryComponent } from './layout/my-history.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProfileComponent } from './components/profile/profile.component';

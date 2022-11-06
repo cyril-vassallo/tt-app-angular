@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { constant } from '../../../config/config';
 import { UserInterface, TaskInterface } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
-import { IdAndMeta } from '../../modules/history/types/history.types';
+import { IdAndMeta } from '../../shared/types/types';
 import { TaskAndMeta, TasksAndMeta } from '../types/types';
 
 @Injectable()
