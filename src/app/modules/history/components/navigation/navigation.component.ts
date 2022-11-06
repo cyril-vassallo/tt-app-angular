@@ -25,9 +25,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
   // ----- Component lifecycle methods ----- //
 
   ngOnInit(): void {
+    this.isNavDisplayed = false;
     this.subscriptions.add(this.navigationService.getNavigation().subscribe((_observer: NavigationAndMeta) => {
       this.navigation =  _observer.data;
     }));
+
   }
 
   ngOnDestroy(): void {
@@ -39,6 +41,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   onLogoutClick(): void {
     this.onLogoutEvent.emit();
+    this.isNavDisplayed = false
   }
 
   onBurgerClick(): void {

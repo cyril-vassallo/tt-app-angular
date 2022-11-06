@@ -15,7 +15,7 @@
         z-index: 1;
         position:absolute;
         top: 80px;
-        width: 100%;  
+        width: 0px;  
         background-color: rgba($color: $color-dark, $alpha: 0.95);
         font-size: 1.5rem;
         color: white;
@@ -25,6 +25,7 @@
 
         &.nav-active {
             height: 1000%;
+            width: 100%;
         }
         .nav-logout {
             padding: 1rem;
@@ -35,7 +36,10 @@
 @media screen and (min-width: 680px) { 
     .navigation-bar {
         .nav-dropdown {
-            max-width: 250px;  
+            width: 0px;
+            &.nav-active {
+                width: 250px;
+            }
         }
     }
  }

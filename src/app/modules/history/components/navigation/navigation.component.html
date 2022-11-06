@@ -2,7 +2,7 @@
     <div class="nav-burger text-secondary" (click)="onBurgerClick()">
         Navigation
     </div>
-    <div class="nav-dropdown" [ngClass]="{'nav-active': isNavDisplayed}">
+    <div class="nav-dropdown" [ngClass]="{'nav-active': isNavDisplayed }">
         <div class="container-fluid">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li class="nav-item" *ngFor="let item of navigation" >
