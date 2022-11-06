@@ -11,7 +11,7 @@ export class FormButtonComponent implements OnChanges {
   @Input() buttonTextSyncGithub: string = 'Sync today task with git!';
   @Input() isFormDisplayed: boolean = false;
   @Output() onToggleFormEvent = new EventEmitter<void>();
-  @Input() onSyncGithubEvent = new EventEmitter<void>();
+  @Output() onSyncGithubEvent = new EventEmitter<void>();
   @Input() teamPartner!: UserInterface | null;
   disabledSate: boolean = true;
 

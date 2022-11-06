@@ -3,7 +3,8 @@
     <h5 class="card-title">Find here your personal params</h5>
   </div>
   <div class="row">
-    <form
+    <div class="col-lg-6">
+      <form
       [formGroup]="userForm"
       (ngSubmit)="onUserFormSubmit()"
       class="col mb-3"
@@ -88,7 +89,10 @@
         </ng-template>
       </div>
     </form>
-    <div class="col mb-3 container">
+
+    </div>
+    
+    <div class="col-lg-4 mb-3 container">
       <h2 class="fs-4 fw-semibold text-secondary">App settings</h2>
       <div class="row mt-2">
         <label class="col form-label">Clear today history:</label>

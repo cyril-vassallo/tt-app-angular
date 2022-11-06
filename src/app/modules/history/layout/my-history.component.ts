@@ -185,6 +185,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
   onSyncGitTasks(): void {
     console.log('sync...');
     console.log(this.githubState);
+    alert('feature not available!');
     //TODO: parse all commits and message from github api and update tasksSate
   }
 
