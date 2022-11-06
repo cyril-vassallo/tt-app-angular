@@ -32,7 +32,7 @@
     }
 }
 
-@media (min-width: 680px) { 
+@media screen and (min-width: 680px) { 
     .navigation-bar {
         .nav-dropdown {
             max-width: 250px;  
