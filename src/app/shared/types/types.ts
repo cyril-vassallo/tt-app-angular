@@ -6,7 +6,6 @@ import {
   NavigationItemInterface,
 } from '../interfaces/interfaces';
 
-
 export type UsersAndMeta = {
   data: UserInterface[];
   meta: MetaInterface;

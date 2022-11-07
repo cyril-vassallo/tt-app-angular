@@ -1,48 +1,23 @@
 <main class="main-my-history">
-  <app-navigation
-    [isAuth]="isAuthState"
-    [handleNavItemClick]="onClickNavItem"
-    (onLogoutEvent)="onLogout()"
-  ></app-navigation>
+  <app-navigation [isAuth]="isAuthState" [handleNavItemClick]="onClickNavItem" (onLogoutEvent)="onLogout()">
+  </app-navigation>
   <h1 class="text-center m-5 fs-1 fw-semibold">
-    <span class="text-warning">Taski</span
-    ><span class="text-primary">Team</span>
+    <span class="text-warning">Taski</span><span class="text-primary">Team</span>
   </h1>
   <div *ngIf="!isAuthState && !isSigningUpState" id="app-login">
-    <app-login
-      [user]="userState"
-      (onLoginEvent)="onLogin($event)"
-      (onShowSignUpEvent)="onShowSignUp($event)"
-    ></app-login>
+    <app-login [user]="userState" (onLoginEvent)="onLogin($event)" (onShowSignUpEvent)="onShowSignUp($event)">
+    </app-login>
   </div>
   <div *ngIf="isSigningUpState" id="app-sign-up">
     <app-sign-up (onShowSignUpEvent)="onShowSignUp($event)"></app-sign-up>
   </div>
   <div *ngIf="isAuthState" id="app-my-history">
-    <app-profile
-      [user]="userState"
-      (onLoadUserTasksEvent)="onLoadUserTasks($event)"
-    ></app-profile>
-    <app-team
-      [users]="usersState"
-      (onTeamPartnerTasksEvent)="onLoadUserTasks($event)"
-    ></app-team>
-    <app-form-button
-      [teamPartner]="teamPartnerState"
-      (onToggleFormEvent)="onToggleFormState()"
-      (onSyncGithubEvent)="onSyncGitTasks()"
-      [isFormDisplayed]="formDisplayState"
-    ></app-form-button>
-    <app-task-form
-      *ngIf="isFormShouldDisplayed()"
-      [user]="userState"
-      [tasks]="tasksState"
-      (onTasksStateEvent)="onTasksStateUpdate($event)"
-    ></app-task-form>
-    <app-daily-task
-      [tasks]="tasksState"
-      [user]="userState"
-      [teamPartner]="teamPartnerState"
-    ></app-daily-task>
+    <app-profile [user]="userState" (onLoadUserTasksEvent)="onLoadUserTasks($event)"></app-profile>
+    <app-team [users]="usersState" (onTeamPartnerTasksEvent)="onLoadUserTasks($event)"></app-team>
+    <app-form-button [teamPartner]="teamPartnerState" (onToggleFormEvent)="onToggleFormState()"
+      (onSyncGithubEvent)="onSyncGitTasks()" [isFormDisplayed]="formDisplayState"></app-form-button>
+    <app-task-form *ngIf="isFormShouldDisplayed()" [user]="userState" [tasks]="tasksState"
+      (onTasksStateEvent)="onTasksStateUpdate($event)"></app-task-form>
+    <app-daily-task [tasks]="tasksState" [user]="userState" [teamPartner]="teamPartnerState"></app-daily-task>
   </div>
 </main>

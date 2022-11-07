@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 
-
 @Component({
   selector: 'app-my-history',
   templateUrl: './my-history.component.html',
@@ -123,8 +122,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-
-
   restStates(): void {
     this.isAuthState = false;
     this.isSigningUpState = false;
@@ -164,7 +161,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
   onLogout(): void {
     this.restStates();
   }
-
 
   updateUserState(user: UserInterface) {
     if (user !== null) {

@@ -2,16 +2,9 @@
   <h3 class="text-center m-5 fs-2 text-secondary pt-2">My team</h3>
   <div class="d-flex justify-content-md-around app-team-container">
     <div *ngFor="let user of users">
-      <div
-        *ngIf="user !== null"
-        class="d-flex justify-content-center flex-column app-team-partner m-5"
-      >
-        <img
-          src="assets/images/{{ user.photo }}.jpg"
-          class="card-img-top"
-          alt="this person do not exist"
-          (click)="onTeamPartnerClick(user)"
-        />
+      <div *ngIf="user !== null" class="d-flex justify-content-center flex-column app-team-partner m-5">
+        <img src="assets/images/{{ user.photo }}.jpg" class="card-img-top" alt="this person do not exist"
+          (click)="onTeamPartnerClick(user)" />
         <div class="m-auto text-center">
           <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
           <p class="card-title-2 text-warning">{{ user.job }}</p>

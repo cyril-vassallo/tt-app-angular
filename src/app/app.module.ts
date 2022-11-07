@@ -9,7 +9,6 @@ import { UserService } from './shared/services/user.service';
 import { TaskService } from './shared/services/task.service';
 import { GithubService } from './shared/services/github.service';
 
-
 const providers = [UserService, TaskService, GithubService];
 
 @NgModule({

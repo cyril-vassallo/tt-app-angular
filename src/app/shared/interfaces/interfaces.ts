@@ -45,12 +45,12 @@ export interface CommitInterface {
 }
 
 export interface ChartInterface {
-    id: string;
-    title: string;
-    type: ChartType;
-    labels: string[];
-    datasets: any;
-    options: ChartOptions;
+  id: string;
+  title: string;
+  type: ChartType;
+  labels: string[];
+  datasets: any;
+  options: ChartOptions;
 }
 
 export interface NavigationItemInterface {

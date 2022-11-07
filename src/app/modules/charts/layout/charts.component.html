@@ -1,42 +1,23 @@
 <main class="main-my-charts">
   <h1 class="text-center m-5 fs-2 fw-semibold text-secondary">My Charts</h1>
   <p class="text-center m-5 fw-semibold text-secondary">
-    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
-      >Go back to the app</a
-    >
+    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Go back to the app</a>
   </p>
 
   <div>
-    <app-chart
-      [id]="barChart.id"
-      [title]="barChart.title"
-      [type]="barChart.type"
-      [options]="barChart.options"
-      [labels]="barChart.labels"
-      [datasets]="barChart.datasets"
-    ></app-chart>
+    <app-chart [id]="barChart.id" [title]="barChart.title" [type]="barChart.type" [options]="barChart.options"
+      [labels]="barChart.labels" [datasets]="barChart.datasets"></app-chart>
   </div>
 
   <div>
-    <app-chart
-      [id]="bubbleChart.id"
-      [title]="bubbleChart.title"
-      [type]="bubbleChart.type"
-      [options]="bubbleChart.options"
-      [labels]="bubbleChart.labels"
-      [datasets]="bubbleChart.datasets"
-    ></app-chart>
+    <app-chart [id]="bubbleChart.id" [title]="bubbleChart.title" [type]="bubbleChart.type"
+      [options]="bubbleChart.options" [labels]="bubbleChart.labels" [datasets]="bubbleChart.datasets"></app-chart>
   </div>
 
 
   <div>
-    <app-chart
-      [id]="reversedMultiLineChart.id"
-      [title]="reversedMultiLineChart.title"
-      [type]="reversedMultiLineChart.type"
-      [options]="reversedMultiLineChart.options"
-      [labels]="reversedMultiLineChart.labels"
-      [datasets]="reversedMultiLineChart.datasets"
-    ></app-chart>
+    <app-chart [id]="reversedMultiLineChart.id" [title]="reversedMultiLineChart.title"
+      [type]="reversedMultiLineChart.type" [options]="reversedMultiLineChart.options"
+      [labels]="reversedMultiLineChart.labels" [datasets]="reversedMultiLineChart.datasets"></app-chart>
   </div>
 </main>

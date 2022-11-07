@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ChartInterface } from '../../../interfaces/interfaces';
 import {
   Chart,
   registerables,
@@ -15,8 +14,6 @@ Chart.register(...registerables);
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements AfterViewInit {
-
-
   public chart: any;
   @Input() title: string = '';
   @Input() id: string = '';
@@ -34,10 +31,9 @@ export class ChartComponent implements AfterViewInit {
       type: this.type,
       data: {
         labels: this.labels,
-        datasets: this.datasets
+        datasets: this.datasets,
       },
-      options: this.options
+      options: this.options,
     });
-
   }
 }

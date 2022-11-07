@@ -1,27 +1,12 @@
-<form
-  #loginForm="ngForm"
-  (ngSubmit)="onSubmitLogin(loginForm.value)"
-  class="app-login d-flex flex-column justify-content-center container-sm"
->
+<form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm.value)"
+  class="app-login d-flex flex-column justify-content-center container-sm">
   <div class="mb-3 app-input">
     <label for="app-email" class="form-label text-primary">Email address</label>
-    <input
-      type="email"
-      name="email"
-      id="app-email"
-      class="form-control"
-      [ngModel]="email"
-    />
+    <input type="email" name="email" id="app-email" class="form-control" [ngModel]="email" />
   </div>
   <div class="mb-3 app-input">
     <label for="app-password" class="form-label text-primary">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="app-password"
-      class="form-control"
-      [ngModel]="password"
-    />
+    <input type="password" name="password" id="app-password" class="form-control" [ngModel]="password" />
   </div>
   <div class="d-flex justify-content-center">
     <div class="nav-item">
@@ -30,11 +15,7 @@
   </div>
   <div class="d-flex justify-content-center mt-5">
     <div class="nav-item">
-      <a
-        class="nav-link text-primary fw-semibold"
-        href="#app-sign-up"
-        (click)="onShowSignUpClick()"
-      >
+      <a class="nav-link text-primary fw-semibold" href="#app-sign-up" (click)="onShowSignUpClick()">
         Pas encore de compte
       </a>
     </div>

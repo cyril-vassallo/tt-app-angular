@@ -1,4 +1,10 @@
-import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnChanges,
+  EventEmitter,
+} from '@angular/core';
 import { UserInterface } from '../../../../shared/interfaces/interfaces';
 
 @Component({

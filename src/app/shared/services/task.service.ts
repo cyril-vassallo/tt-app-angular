@@ -31,7 +31,10 @@ export class TaskService {
 
   // path: /task
   public updateTask(task: TaskInterface): Observable<TasksAndMeta> {
-    return this.http.patch<TasksAndMeta>(constant.API_URL + constant.TASK, task);
+    return this.http.patch<TasksAndMeta>(
+      constant.API_URL + constant.TASK,
+      task
+    );
   }
 
   // path: /task/user/{:userId}

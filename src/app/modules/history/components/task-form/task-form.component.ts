@@ -128,7 +128,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateTasksState(tasks : TaskInterface []): void {
+  updateTasksState(tasks: TaskInterface[]): void {
     this.tasks = tasks;
 
     if (this.tasks) {

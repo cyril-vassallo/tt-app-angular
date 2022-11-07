@@ -1,4 +1,10 @@
-import { Component, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnDestroy,
+  EventEmitter,
+} from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import {
   UserInterface,
@@ -20,8 +26,7 @@ export class LoginComponent implements OnDestroy {
   errorMsg: string = '';
   tasks: TaskInterface[] | null = null;
 
-
-  @Output() onLoginEvent = new EventEmitter<UserInterface | null >();
+  @Output() onLoginEvent = new EventEmitter<UserInterface | null>();
   @Output() onShowSignUpEvent = new EventEmitter<boolean>();
   @Input() user!: UserInterface | null;
 

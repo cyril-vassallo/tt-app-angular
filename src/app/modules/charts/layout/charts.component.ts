@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartInterface } from '../../../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-charts',
