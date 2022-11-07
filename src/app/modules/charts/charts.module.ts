@@ -7,4 +7,4 @@ import { CoreModule } from '../core/core.module';
   declarations: [ChartsComponent],
   imports: [CoreModule, ChartModule],
 })
-export class ChartsModule{}
+export class ChartsModule {}
