@@ -55,7 +55,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
     this.subscriptions?.unsubscribe();
   }
 
-  // ----- Component methods onload ----- //
+  // ----- OnInit Component methods ----- //
 
   initHistoryFeatureStates(user: UserInterface): void {
     this.updateUserState(user);

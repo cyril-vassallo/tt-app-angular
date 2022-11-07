@@ -11,8 +11,8 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   // path: /task
-  public createTask(task: TaskInterface): Observable<TaskAndMeta> {
-    return this.http.post<TaskAndMeta>(constant.API_URL + constant.TASK, task);
+  public createTask(task: TaskInterface): Observable<TasksAndMeta> {
+    return this.http.post<TasksAndMeta>(constant.API_URL + constant.TASK, task);
   }
 
   // path: /task/last
@@ -30,8 +30,8 @@ export class TaskService {
   }
 
   // path: /task
-  public updateTask(task: TaskInterface): Observable<TaskAndMeta> {
-    return this.http.patch<TaskAndMeta>(constant.API_URL + constant.TASK, task);
+  public updateTask(task: TaskInterface): Observable<TasksAndMeta> {
+    return this.http.patch<TasksAndMeta>(constant.API_URL + constant.TASK, task);
   }
 
   // path: /task/user/{:userId}

@@ -15,7 +15,7 @@ import {
   TaskInterface,
   CommitInterface,
 } from '../../../../shared/interfaces/interfaces';
-import { TaskAndMeta } from '../../../../shared/types/types';
+import { TaskAndMeta, TasksAndMeta } from '../../../../shared/types/types';
 
 @Component({
   selector: 'app-task-form',
@@ -108,9 +108,8 @@ export class TaskFormComponent implements OnInit, OnDestroy {
           this.subscriptions.add(
             this.taskService
               .updateTask(this.task)
-              .subscribe((_observer: TaskAndMeta) => {
-                this.task = _observer.data;
-                this.updateTasksState();
+              .subscribe((_observer: TasksAndMeta) => {
+                this.updateTasksState(_observer.data);
               })
           );
         }
@@ -120,9 +119,8 @@ export class TaskFormComponent implements OnInit, OnDestroy {
           this.subscriptions.add(
             this.taskService
               .createTask(this.task)
-              .subscribe((_observer: TaskAndMeta) => {
-                this.task = _observer.data;
-                this.updateTasksState();
+              .subscribe((_observer: TasksAndMeta) => {
+                this.updateTasksState(_observer.data);
               })
           );
         }
@@ -130,20 +128,8 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateTasksState(): void {
-    if (this.tasks) {
-      this.tasks = this.tasks.map((task) => {
-        if (task.id && task.id === this.task?.id) {
-          return this.task;
-        } else {
-          return task;
-        }
-      });
-    } else if (!this.tasks && this.task) {
-      this.tasks = [this.task];
-    } else {
-      this.tasks = null;
-    }
+  updateTasksState(tasks : TaskInterface []): void {
+    this.tasks = tasks;
 
     if (this.tasks) {
       this.onTasksStateEvent.emit(this.tasks);
