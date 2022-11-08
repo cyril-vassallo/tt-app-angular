@@ -1,14 +1,16 @@
 <div *ngFor="let task of tasks" class="app-daily-task-component container ard my-3 shadow p-1 bg-light">
   <div class="container">
     <div class="row align-items-center">
-      <div class="app-task-head-item-left col-sm-2">
-        <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo }}.jpg" class="card-img-top"
-          alt="this person do not exist" />
+      <div class="app-task-head-item-left col-md-6">
+        <div class="m-2">
+          <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo }}.jpg" class="card-img-top"
+            alt="this person do not exist" />
+        </div>
+        <div *ngIf="getUser().firstName">
+          {{ getUser().firstName }} {{ getUser().lastName }}
+        </div>
       </div>
-      <div *ngIf="getUser().firstName" class="app-task-head-item-left col-sm-5">
-        {{ getUser().firstName }} {{ getUser().lastName }}
-      </div>
-      <div class="app-task-head-item-right col-sm-5 text-secondary">
+      <div class="app-task-head-item-right col-md-6 text-secondary">
         Date: {{ task.date }}
       </div>
     </div>
