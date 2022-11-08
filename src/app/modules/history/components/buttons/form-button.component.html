@@ -1,6 +1,6 @@
-<div class="container d-flex justify-content-center my-5">
+<div class="app-action-buttons-component container d-flex justify-content-center flex-wrap my-5">
   <button *ngIf="!isFormDisplayed" (click)="onOpenFormClick()"
-    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="m-auto app-open-form"
+    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2"
     [disabled]="disabledSate">
     <span *ngIf="!disabledSate; else disabledLabel">{{
       buttonTextOpenForm
@@ -8,7 +8,7 @@
     <ng-template #disabledLabel> <span>Read Only</span></ng-template>
   </button>
   <button *ngIf="!isFormDisplayed" (click)="onSyncGithubClick()"
-    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="m-auto app-open-form"
+    [ngClass]="{ 'btn': true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2"
     [disabled]="disabledSate">
     <span *ngIf="!disabledSate; else disabledLabel">{{
       buttonTextSyncGithub

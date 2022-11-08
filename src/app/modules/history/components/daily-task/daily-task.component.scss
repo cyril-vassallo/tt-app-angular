@@ -1,7 +1,31 @@
+@import '../../../../app.component.scss';
+
 .app-daily-task-component {
+  width: 80%;
   img {
-    border-radius: 50%;
-    width: 4rem;
+    border-radius: 25%;
+    width: 3rem;
     align-self: center;
+  }
+  .app-git-logo {
+    width: 32px;
+  }
+  .app-task-head-item-left {
+    text-align: center;
+  }
+  .app-task-head-item-right {
+    text-align: center;
+  }
+}
+
+
+@media screen and (min-width: $sm-screen-size) {
+  .app-daily-task-component {
+    .app-task-head-item-left {
+      text-align: left;
+    }
+    .app-task-head-item-right {
+      text-align: right;
+    }
   }
 }

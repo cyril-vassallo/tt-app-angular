@@ -1,0 +1,15 @@
+@import '../../../../app.component.scss';
+
+.app-action-buttons-component {
+    .app-action-button {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $sm-screen-size) {
+    .app-action-buttons-component {
+        .app-action-button {
+            width: auto;
+        }
+    }
+}

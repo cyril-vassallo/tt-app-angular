@@ -1,25 +1,37 @@
-<div *ngFor="let task of tasks" class="container app-daily-task-component card my-3 shadow p-4 bg-light"
-  style="overflow: hidden">
-  <div class="d-flex">
-    <div class="m-3">
-      <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo }}.jpg" class="card-img-top"
-        alt="this person do not exist" />
-      <p *ngIf="getUser().firstName" class="text-center">
-        {{ getUser().firstName }}
-      </p>
+<div *ngFor="let task of tasks" class="app-daily-task-component container ard my-3 shadow p-1 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="app-task-head-item-left col-sm-2">
+        <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo }}.jpg" class="card-img-top"
+          alt="this person do not exist" />
+      </div>
+      <div *ngIf="getUser().firstName" class="app-task-head-item-left col-sm-5">
+        {{ getUser().firstName }} {{ getUser().lastName }}
+      </div>
+      <div class="app-task-head-item-right col-sm-5 text-secondary">
+        Date: {{ task.date }}
+      </div>
     </div>
+
     <div class="m-3">
-      <p class="text-primary fs-5">
-        Date:
-        {{ task.date }}
-        <a href="{{ commit.url }}" *ngFor="let commit of task.commits"
-          class="badge text-bg-success mx-2 text-truncate">{{ commit.hash }}</a>
-      </p>
-      <ul>
-        <li *ngFor="let item of task.list" class="text-secondary">
-          {{ item }}
-        </li>
-      </ul>
+
+      <div class="d-flex flex-wrap">
+        <p *ngFor="let commit of task.commits" class="d-flex m-1">
+          <img src="assets/images/git.png" alt="logo github" class="app-git-logo" />
+          <a href="{{ commit.url }}" class="custom-badge text-bg-success">{{
+            commit.hash }}</a>
+        </p>
+      </div>
+      <div>
+        <p *ngFor="let item of task.list" class="text-success">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="currentColor">
+            <path d=" M5 20v-2h14v2Zm4.55-4-5.675-5.675L5.3 8.9l4.25 4.25L18.7 4l1.425 1.425Z" />
+          </svg>
+          <span class="text-secondary">
+            {{ item }}
+          </span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
