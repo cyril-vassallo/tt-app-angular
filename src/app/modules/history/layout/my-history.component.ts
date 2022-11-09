@@ -9,6 +9,8 @@ import { GithubService } from '../../../shared/services/github.service';
 import { Subscription } from 'rxjs';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
+import format from 'date-fns/format';
+import { parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-my-history',
@@ -179,10 +181,52 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
   }
 
   onSyncGitTasks(): void {
-    console.log('sync...');
-    console.log(this.githubState);
-    alert('feature not available!');
-    //TODO: parse all commits and message from github api and update tasksSate
+    if (this.githubState && this.userState?.id) {
+      const todayDate = format(new Date(), 'dd/MM/yyyy');
+      const newTask: TaskInterface = {
+        user: this.userState.id,
+        date: todayDate,
+        commits: [],
+        list: [],
+      };
+
+      this.subscriptions.add(
+        this.githubService
+          .checkGithubRepository(this.githubState)
+          .subscribe((response) => {
+            const commitDate = format(
+              parseISO(response.commit.commit.committer.date),
+              'dd/MM/yyyy'
+            );
+
+            if (commitDate === todayDate) {
+              console.log(response);
+              newTask.list?.push(response.commit.commit.message);
+              newTask.commits?.push({
+                hash: response.commit.sha,
+                url: response.commit.html_url,
+              });
+
+              this.subscriptions.add(
+                this.taskService
+                  .createTask(newTask)
+                  .subscribe((tasks: TasksAndMeta) => {
+                    this.tasksState = tasks.data;
+                  })
+              );
+            } else {
+              alert(
+                'you need to configure a public github repository, if so no commit detected for today !'
+              );
+            }
+          })
+      );
+    }
+
+    //TODO - iterations to detect all sha relate to today task.
+    //TODO - detect if it is update or create before save taskState.
+    //TODO - create observable based on sha array to get message.
+    //TODO - assemble data to one task and merge into taskState.
   }
 
   onShowSignUp(isShown: boolean): void {

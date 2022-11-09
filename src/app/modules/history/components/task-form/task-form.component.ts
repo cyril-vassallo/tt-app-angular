@@ -15,7 +15,7 @@ import {
   TaskInterface,
   CommitInterface,
 } from '../../../../shared/interfaces/interfaces';
-import { TaskAndMeta, TasksAndMeta } from '../../../../shared/types/types';
+import { TasksAndMeta } from '../../../../shared/types/types';
 
 @Component({
   selector: 'app-task-form',
