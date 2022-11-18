@@ -6,6 +6,8 @@ import {
 import { GithubService } from '../../../../shared/services/github.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import format from 'date-fns/format';
+import { FormatService } from '../../../../shared/services/format.service';
 
 @Component({
   selector: 'app-github',
@@ -30,7 +32,10 @@ export class GithubComponent implements OnInit {
 
   subscriptions: Subscription = new Subscription();
 
-  constructor(private githubService: GithubService) {}
+  constructor(
+    private githubService: GithubService,
+    private formatService: FormatService
+  ) {}
 
   // ----- Component lifecycle methods ----- //
 
@@ -134,7 +139,7 @@ export class GithubComponent implements OnInit {
 
     this.subscriptions.add(
       this.githubService
-        .checkGithubRepository(github)
+        .checkGithubRepository(github, this.formatService.dateToIso(new Date()))
         .subscribe((_observer: any) => {
           _observer.status === 404 || _observer.status === 403
             ? (this.hasError = true)

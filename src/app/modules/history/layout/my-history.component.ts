@@ -11,6 +11,7 @@ import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 import format from 'date-fns/format';
 import { parseISO } from 'date-fns';
+import { FormatService } from '../../../shared/services/format.service';
 
 @Component({
   selector: 'app-my-history',
@@ -36,15 +37,22 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription = new Subscription();
 
+  todayDate: string = '';
+
+  todayDateIso: string = '';
+
   constructor(
     private taskService: TaskService,
     private userService: UserService,
-    private githubService: GithubService
+    private githubService: GithubService,
+    private formatService: FormatService
   ) {}
 
   // ----- Component lifecycle methods ----- //
 
   ngOnInit() {
+    this.todayDate = format(new Date(), 'dd/MM/yyyy');
+    this.todayDateIso = this.formatService.dateToIso(new Date());
     const serializedUser: string | null = localStorage.getItem('user');
     if (serializedUser) {
       const user: UserInterface = JSON.parse(serializedUser);
@@ -182,43 +190,44 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   onSyncGitTasks(): void {
     if (this.githubState && this.userState?.id) {
-      const todayDate = format(new Date(), 'dd/MM/yyyy');
       const newTask: TaskInterface = {
         user: this.userState.id,
-        date: todayDate,
+        date: this.todayDate,
         commits: [],
         list: [],
       };
 
       this.subscriptions.add(
         this.githubService
-          .checkGithubRepository(this.githubState)
+          .checkGithubRepository(this.githubState, this.todayDateIso)
           .subscribe((response) => {
-            const commitDate = format(
-              parseISO(response.commit.commit.committer.date),
-              'dd/MM/yyyy'
+            newTask.list?.push(
+              ...response.map((resp: any) => resp.commit.commit.message)
             );
 
-            if (commitDate === todayDate) {
-              console.log(response);
-              newTask.list?.push(response.commit.commit.message);
-              newTask.commits?.push({
-                hash: response.commit.sha,
-                url: response.commit.html_url,
-              });
+            newTask.commits?.push(
+              ...response.map((resp: any) => {
+                return {
+                  hash: resp.commit.sha,
+                  url: resp.commit.html_url,
+                };
+              })
+            );
 
-              this.subscriptions.add(
-                this.taskService
-                  .createTask(newTask)
-                  .subscribe((tasks: TasksAndMeta) => {
-                    this.tasksState = tasks.data;
-                  })
-              );
-            } else {
-              alert(
-                'you need to configure a public github repository, if so no commit detected for today !'
-              );
-            }
+            console.log(newTask);
+
+            newTask.commits?.push({
+              hash: response.commit.sha,
+              url: response.commit.html_url,
+            });
+
+            this.subscriptions.add(
+              this.taskService
+                .createTask(newTask)
+                .subscribe((tasks: TasksAndMeta) => {
+                  this.tasksState = tasks.data;
+                })
+            );
           })
       );
     }

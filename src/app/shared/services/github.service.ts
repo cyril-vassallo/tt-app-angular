@@ -50,19 +50,13 @@ export class GithubService {
   }
 
   // path: /repos/{:owner}/{:repository}/branches/{:branch}
-  public checkGithubRepository(github: GithubInterface): Observable<any> {
+  public checkGithubRepository(
+    github: GithubInterface,
+    isoDate: string
+  ): Observable<any> {
+    const endPoint: string = `${constant.API_GITHUB}${constant.REPOS}/${github.owner}/${github.repository}/commits?since=${isoDate}`;
     return this.http
-      .get<any>(
-        constant.API_GITHUB +
-          constant.REPOS +
-          '/' +
-          github.owner +
-          '/' +
-          github.repository +
-          constant.BRANCHES +
-          '/' +
-          github.branch
-      )
+      .get<any>(endPoint)
       .pipe(catchError((err) => of({ status: err.status })));
   }
 }

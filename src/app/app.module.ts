@@ -8,8 +8,9 @@ import { ChartsModule } from './modules/charts/charts.module';
 import { UserService } from './shared/services/user.service';
 import { TaskService } from './shared/services/task.service';
 import { GithubService } from './shared/services/github.service';
+import { FormatService } from './shared/services/format.service';
 
-const providers = [UserService, TaskService, GithubService];
+const providers = [UserService, TaskService, GithubService, FormatService];
 
 @NgModule({
   declarations: [AppComponent],
