@@ -197,45 +197,47 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
         list: [],
       };
 
+      const todayTask = this.tasksState?.find(
+        (task) => task.date === this.todayDate
+      );
+
+      console.log(todayTask);
+      console.log(todayTask === undefined);
+
       this.subscriptions.add(
         this.githubService
           .checkGithubRepository(this.githubState, this.todayDateIso)
           .subscribe((response) => {
             newTask.list?.push(
-              ...response.map((resp: any) => resp.commit.commit.message)
+              ...response.map((resp: any) => resp.commit.message)
             );
 
             newTask.commits?.push(
               ...response.map((resp: any) => {
                 return {
-                  hash: resp.commit.sha,
-                  url: resp.commit.html_url,
+                  hash: resp.sha,
+                  url: resp.html_url,
                 };
               })
             );
 
-            console.log(newTask);
-
-            newTask.commits?.push({
-              hash: response.commit.sha,
-              url: response.commit.html_url,
-            });
-
-            this.subscriptions.add(
+            if (todayTask === undefined) {
               this.taskService
                 .createTask(newTask)
                 .subscribe((tasks: TasksAndMeta) => {
                   this.tasksState = tasks.data;
-                })
-            );
+                });
+            } else {
+              newTask.id = todayTask.id;
+              this.taskService
+                .updateTask(newTask)
+                .subscribe((tasks: TasksAndMeta) => {
+                  this.tasksState = tasks.data;
+                });
+            }
           })
       );
     }
-
-    //TODO - iterations to detect all sha relate to today task.
-    //TODO - detect if it is update or create before save taskState.
-    //TODO - create observable based on sha array to get message.
-    //TODO - assemble data to one task and merge into taskState.
   }
 
   onShowSignUp(isShown: boolean): void {
