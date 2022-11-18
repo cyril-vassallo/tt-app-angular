@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 import format from 'date-fns/format';
-import { parseISO } from 'date-fns';
 import { FormatService } from '../../../shared/services/format.service';
 
 @Component({
@@ -200,9 +199,6 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
       const todayTask = this.tasksState?.find(
         (task) => task.date === this.todayDate
       );
-
-      console.log(todayTask);
-      console.log(todayTask === undefined);
 
       this.subscriptions.add(
         this.githubService
