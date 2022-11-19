@@ -1,18 +1,17 @@
-<div class="app-action-buttons-component container d-flex justify-content-center flex-wrap my-5">
-  <button *ngIf="!isFormDisplayed" (click)="onOpenFormClick()"
-    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2"
-    [disabled]="disabledSate">
-    <span *ngIf="!disabledSate; else disabledLabel">{{
-      buttonTextOpenForm
-      }}</span>
-    <ng-template #disabledLabel> <span>Read Only</span></ng-template>
+<div *ngIf="!isFormDisplayed"
+  class="app-action-buttons-component container d-flex justify-content-center flex-wrap my-5">
+  <button *ngIf="!disabledSate; else noEdition" (click)="onOpenFormClick()"
+    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2">
+    <span>{{ buttonTextOpenForm }}</span>
   </button>
-  <button *ngIf="!isFormDisplayed" (click)="onSyncGithubClick()"
-    [ngClass]="{ 'btn': true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2"
-    [disabled]="disabledSate">
-    <span *ngIf="!disabledSate; else disabledLabel">{{
-      buttonTextSyncGithub
-      }}</span>
-    <ng-template #disabledLabel> <span>Read Only</span></ng-template>
+  <button *ngIf="!disabledSate;" (click)="onSyncGithubClick()"
+    [ngClass]="{ 'btn': true, 'btn-warning': true, 'btn-lg': true }"
+    class="app-action-button m-auto app-open-form mb-2">
+    <span>{{ buttonTextSyncGithub }}</span>
   </button>
 </div>
+
+<ng-template #noEdition>
+  <p class="alert alert-warning">You cannot edit your partner task list, click on your own avatar to create your
+    personal tasks !</p>
+</ng-template>

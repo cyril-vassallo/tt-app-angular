@@ -1,52 +1,41 @@
-<div class="container d-flex flex-wrap flex-column my-5">
-  <form
-    class="mb-3 d-flex flex-column"
-    [formGroup]="taskForm"
-    (ngSubmit)="onTaskFormSubmit()"
-  >
-    <label for="taskInput">New task</label>
-    <input
-      id="taskInput"
-      formControlName="taskInput"
-      placeholder="Enter task description"
-      class="form-control form-control-lg"
-    />
-    <div id="commitHelp" class="form-text mb-1">
-      You can add an other Task for today after validation of this one !
+<div class="container shadow bg-light my-5 pb-5 app-form-component">
+  <p (click)="onCloseForm()" class="app-cross-close">X</p>
+  <form class="row bg-primary bg-opacity-50 p-2 m-3 rounded" [formGroup]="taskForm" (ngSubmit)="onTaskFormSubmit()">
+    <div class="col-lg-9">
+      <label for="taskInput" class="text-light">New task</label>
+      <input id="taskInput" formControlName="taskInput" placeholder="ex: refactor test e2e"
+        class="form-control form-control-lg" />
+      <div id="commitHelp" class="form-text text-light mb-1">
+        You can add an other Task for today after validation of this one !
+      </div>
     </div>
-    <button type="submit" class="btn btn-lg btn-primary app-btn">
-      Add this Task for today!
-    </button>
-  </form>
-  <form
-    *ngIf="hasTask"
-    class="mb-3 d-flex flex-column"
-    [formGroup]="commitForm"
-    (ngSubmit)="onCommitFormSubmit()"
-  >
-    <label for="commitHashInput">New commit hash</label>
-    <input
-      id="commitHashInput"
-      formControlName="commitHashInput"
-      placeholder="Enter commit hash"
-      class="form-control form-control-lg"
-    />
-    <label for="commitUrlInput">New commit url</label>
-    <input
-      id="commitUrlInput"
-      formControlName="commitUrlInput"
-      placeholder="Enter commit url"
-      class="form-control form-control-lg"
-    />
-    <div id="commitHelp" class="form-text mb-1">
-      You can add an other Commit for today after validation of this one !
+    <div class="col-lg-3 m-auto p-2">
+      <button type="submit" class="btn btn-lg btn-primary app-btn">
+        Add task
+      </button>
     </div>
-    <button type="submit" class="btn btn-lg btn-success app-btn">
-      Add this Commit for today!
-    </button>
   </form>
-  <div *ngIf="!isValidCommit" class="alert alert-danger mt-2">
-    Failed to add commit ! For a valid commit the two inputs need to be filled
-    up, try again !
-  </div>
+  <form *ngIf="hasTask" class="row bg-success bg-opacity-50 p-2 m-3 rounded" [formGroup]="commitForm"
+    (ngSubmit)="onCommitFormSubmit()">
+    <div class="col-lg-9">
+      <label for="commitHashInput" class="text-light">Commit displayed identifier</label>
+      <input id="commitHashInput" formControlName="commitHashInput" placeholder="ex: commit hash or any custom id"
+        class="form-control form-control-lg mb-3" />
+      <label for="commitUrlInput" class="text-light">Commit url</label>
+      <input id="commitUrlInput" formControlName="commitUrlInput"
+        placeholder="ex: https://github.com/..../commit/f0ed5f46e...." class="form-control form-control-lg" />
+      <div id="commitHelp" class="form-text text-light mb-1">
+        You can add an other Commit for today after validation of this one !
+      </div>
+      <div *ngIf="!isValidCommit" class="alert alert-danger mt-2">
+        Failed to add commit ! For a valid commit all inputs need to be filled
+        up, try again !
+      </div>
+    </div>
+    <div class="col-lg-3 m-auto p-2">
+      <button type="submit" class="btn btn-lg btn-success app-btn">
+        Add commit
+      </button>
+    </div>
+  </form>
 </div>

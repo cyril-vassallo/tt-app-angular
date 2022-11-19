@@ -17,7 +17,8 @@
     <app-form-button [teamPartner]="teamPartnerState" (onToggleFormEvent)="onToggleFormState()"
       (onSyncGithubEvent)="onSyncGitTasks()" [isFormDisplayed]="formDisplayState"></app-form-button>
     <app-task-form *ngIf="isFormShouldDisplayed()" [user]="userState" [tasks]="tasksState"
-      (onTasksStateEvent)="onTasksStateUpdate($event)"></app-task-form>
-    <app-daily-task [tasks]="tasksState" [user]="userState" [teamPartner]="teamPartnerState"></app-daily-task>
+      (onTasksStateEvent)="onTasksStateUpdate($event)" (onCloseFormEvent)="onCloseForm($event)"></app-task-form>
+    <app-daily-task [tasks]=" tasksState" [user]="userState" [teamPartner]="teamPartnerState">
+    </app-daily-task>
   </div>
 </main>

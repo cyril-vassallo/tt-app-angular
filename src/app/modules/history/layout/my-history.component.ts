@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, EventEmitter } from '@angular/core';
 import {
   UserInterface,
   GithubInterface,
@@ -117,6 +117,10 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
           })
       );
     }
+  }
+
+  onCloseForm(event: boolean) {
+    this.formDisplayState = !event;
   }
 
   loadUserGithub(): void {

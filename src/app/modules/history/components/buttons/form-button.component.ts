@@ -13,8 +13,8 @@ import { UserInterface } from '../../../../shared/interfaces/interfaces';
   styleUrls: ['./form-button.component.scss'],
 })
 export class FormButtonComponent implements OnChanges {
-  @Input() buttonTextOpenForm: string = 'Archive today tasks!';
-  @Input() buttonTextSyncGithub: string = 'Sync today task with git!';
+  @Input() buttonTextOpenForm: string = 'Update manually';
+  @Input() buttonTextSyncGithub: string = 'Sync with git';
   @Input() isFormDisplayed: boolean = false;
   @Output() onToggleFormEvent = new EventEmitter<void>();
   @Output() onSyncGithubEvent = new EventEmitter<void>();

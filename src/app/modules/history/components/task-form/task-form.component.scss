@@ -1,6 +1,20 @@
-.app-btn {
-  max-width: 20rem;
+@import '../../../../app.component.scss';
+
+.app-form-component {
+  border-radius: 10px;
   margin: auto;
-  text-align: center;
-  align-self: end;
+
+  .app-cross-close {
+    font-size: 20px;
+    text-align: end;
+    color: $color-disabled;
+  } 
+
+  .app-btn {
+    max-width: 20rem;
+    margin: auto;
+    text-align: center;
+    min-width: 100%;
+  }
 }
+

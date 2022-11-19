@@ -29,6 +29,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   @Input() tasks: TaskInterface[] | null = null;
   @Input() user: UserInterface | null = null;
   @Output() onTasksStateEvent = new EventEmitter<TaskInterface[] | null>();
+  @Output() onCloseFormEvent = new EventEmitter<boolean>();
 
   task: TaskInterface | null = null;
   isTodayTaskExist: boolean = false;
@@ -82,6 +83,10 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.isValidCommit = false;
     }
     this.resetInputsState();
+  }
+
+  onCloseForm(): void {
+    this.onCloseFormEvent.emit(true);
   }
 
   todayTaskExistChecking(): void {
