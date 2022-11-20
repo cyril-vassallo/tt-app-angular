@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "Run npm webpack on startup",
+        "label": "run",
         "type": "shell",
         "command": "docker compose up",
         "windows": {
@@ -13,7 +13,7 @@
           "panel": "new"
         },
         "runOptions": { "runOn": "folderOpen" }
-      }
+      },
     ]
   }
   
