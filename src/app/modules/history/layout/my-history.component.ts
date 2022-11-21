@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   UserInterface,
   GithubInterface,
@@ -6,11 +6,13 @@ import {
 import { TaskService } from '../../../shared/services/task.service';
 import { UserService } from '../../../shared/services/user.service';
 import { GithubService } from '../../../shared/services/github.service';
-import { Subscription } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 import format from 'date-fns/format';
 import { FormatService } from '../../../shared/services/format.service';
+import { LoginComponent } from '../components/login/login.component';
 
 @Component({
   selector: 'app-my-history',
@@ -206,34 +208,54 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
       this.subscriptions.add(
         this.githubService
-          .checkGithubRepository(this.githubState, this.todayDateIso)
+          .geGithubCommits(this.githubState, this.todayDateIso)
+          .pipe(
+            map((commits) => {
+              return commits.filter(
+                (commit: any) =>
+                  this.githubState?.committer === commit.author.login
+              );
+            })
+          )
           .subscribe((response) => {
-            newTask.list?.push(
-              ...response.map((resp: any) => resp.commit.message)
-            );
+            if (response.length > 0) {
+              newTask.list?.push(
+                ...response.map((resp: any) => resp.commit.message)
+              );
 
-            newTask.commits?.push(
-              ...response.map((resp: any) => {
-                return {
-                  hash: resp.sha,
-                  url: resp.html_url,
-                };
-              })
-            );
+              newTask.commits?.push(
+                ...response.map((resp: any) => {
+                  return {
+                    hash: resp.sha,
+                    url: resp.html_url,
+                  };
+                })
+              );
 
-            if (todayTask === undefined) {
-              this.taskService
-                .createTask(newTask)
-                .subscribe((tasks: TasksAndMeta) => {
-                  this.tasksState = tasks.data;
-                });
+              if (todayTask === undefined) {
+                this.taskService
+                  .createTask(newTask)
+                  .subscribe((tasks: TasksAndMeta) => {
+                    this.tasksState = tasks.data;
+                    alert(
+                      `Sync well done: A new task set for today has been created from github !`
+                    );
+                  });
+              } else {
+                newTask.id = todayTask.id;
+                this.taskService
+                  .updateTask(newTask)
+                  .subscribe((tasks: TasksAndMeta) => {
+                    this.tasksState = tasks.data;
+                    alert(
+                      `Sync well done: The task set for today has been updated from github !`
+                    );
+                  });
+              }
             } else {
-              newTask.id = todayTask.id;
-              this.taskService
-                .updateTask(newTask)
-                .subscribe((tasks: TasksAndMeta) => {
-                  this.tasksState = tasks.data;
-                });
+              alert(
+                `Not commit found today for the github user:  ${this.githubState?.committer}`
+              );
             }
           })
       );

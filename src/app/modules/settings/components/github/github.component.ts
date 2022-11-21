@@ -6,8 +6,6 @@ import {
 import { GithubService } from '../../../../shared/services/github.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import format from 'date-fns/format';
-import { FormatService } from '../../../../shared/services/format.service';
 
 @Component({
   selector: 'app-github',
@@ -33,10 +31,7 @@ export class GithubComponent implements OnInit {
 
   subscriptions: Subscription = new Subscription();
 
-  constructor(
-    private githubService: GithubService,
-    private formatService: FormatService
-  ) {}
+  constructor(private githubService: GithubService) {}
 
   // ----- Component lifecycle methods ----- //
 
@@ -141,31 +136,29 @@ export class GithubComponent implements OnInit {
     };
 
     this.subscriptions.add(
-      this.githubService
-        .checkGithubRepository(github, this.formatService.dateToIso(new Date()))
-        .subscribe((_observer: any) => {
-          _observer.status === 404 || _observer.status === 403
-            ? (this.hasError = true)
-            : (this.hasError = false);
+      this.githubService.getGithubBranch(github).subscribe((_observer: any) => {
+        _observer.status === 404 || _observer.status === 403
+          ? (this.hasError = true)
+          : (this.hasError = false);
 
-          const github: GithubInterface = {
-            user: this.user?.id,
-            enabled: this.githubForm.controls.enabled.value!,
-            owner: this.githubForm.controls.owner.value!,
-            repository: this.githubForm.controls.repository.value!,
-            branch: this.githubForm.controls.branch.value!,
-            committer: this.githubForm.controls.committer.value!,
-            token: this.githubForm.controls.token.value!,
-          };
+        const github: GithubInterface = {
+          user: this.user?.id,
+          enabled: this.githubForm.controls.enabled.value!,
+          owner: this.githubForm.controls.owner.value!,
+          repository: this.githubForm.controls.repository.value!,
+          branch: this.githubForm.controls.branch.value!,
+          committer: this.githubForm.controls.committer.value!,
+          token: this.githubForm.controls.token.value!,
+        };
 
-          if (!this.hasError) {
-            if (this.isUserHasGithub) {
-              this.updateGithub(github);
-            } else {
-              this.createGithub(github);
-            }
+        if (!this.hasError) {
+          if (this.isUserHasGithub) {
+            this.updateGithub(github);
+          } else {
+            this.createGithub(github);
           }
-        })
+        }
+      })
     );
   }
 

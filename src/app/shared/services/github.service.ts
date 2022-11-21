@@ -49,12 +49,22 @@ export class GithubService {
       );
   }
 
-  // path: /repos/{:owner}/{:repository}/branches/{:branch}
-  public checkGithubRepository(
+  // NEXT ARE REQUEST TO GITHUB API
+
+  // path: /repos/{:owner}/{:repository}/commits?since={:isoDate}
+  public geGithubCommits(
     github: GithubInterface,
     isoDate: string
   ): Observable<any> {
     const endPoint: string = `${constant.API_GITHUB}${constant.REPOS}/${github.owner}/${github.repository}/commits?since=${isoDate}`;
+    return this.http
+      .get<any>(endPoint)
+      .pipe(catchError((err) => of({ status: err.status })));
+  }
+
+  // path: /repos/{:owner}/{:repository}/branches/{:branch}
+  public getGithubBranch(github: GithubInterface): Observable<any> {
+    const endPoint: string = `${constant.API_GITHUB}${constant.REPOS}/${github.owner}/${github.repository}/branches/${github.branch}`;
     return this.http
       .get<any>(endPoint)
       .pipe(catchError((err) => of({ status: err.status })));
