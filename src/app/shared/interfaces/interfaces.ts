@@ -24,6 +24,7 @@ export interface GithubInterface {
   branch: string;
   enabled: boolean;
   token: string;
+  committer: string;
 }
 
 export interface ErrorInterface {

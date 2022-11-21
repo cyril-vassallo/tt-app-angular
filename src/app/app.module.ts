@@ -9,12 +9,13 @@ import { UserService } from './shared/services/user.service';
 import { TaskService } from './shared/services/task.service';
 import { GithubService } from './shared/services/github.service';
 import { FormatService } from './shared/services/format.service';
+import { CoreModule } from './modules/core/core.module';
 
 const providers = [UserService, TaskService, GithubService, FormatService];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [AppRoutingModule, HistoryModule, SettingsModule, ChartsModule],
+  imports: [CoreModule, HistoryModule, SettingsModule, ChartsModule],
   providers: [...providers],
   bootstrap: [AppComponent],
 })

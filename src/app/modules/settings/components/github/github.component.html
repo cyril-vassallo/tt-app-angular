@@ -17,19 +17,24 @@
       </div>
       <div class="row mt-2 align-items-center">
         <div class="col-md">
-          <label for="owner" class="form-label">Owner</label>
+          <label for="owner" class="form-label">Repository Owner *</label>
           <input formControlName="owner" type="text" class="form-control" id="owner"
             placeholder="Enter repository owner" autocomplete="off" />
         </div>
         <div class="col-md">
-          <label for="repository" class="form-label">Repository</label>
+          <label for="repository" class="form-label">Repository name *</label>
           <input formControlName="repository" type="text" class="form-control" id="repository"
             placeholder="Enter repository name" autocomplete="off" />
         </div>
         <div class="col-md">
-          <label for="branch" class="form-label">Branch</label>
+          <label for="branch" class="form-label">Repository Branch *</label>
           <input formControlName="branch" type="text" class="form-control" id="branch"
             placeholder="Enter repository branch name" autocomplete="off" />
+        </div>
+        <div class="col-md">
+          <label for="committer" class="form-label">Github user *</label>
+          <input formControlName="committer" type="text" class="form-control" id="committer"
+            placeholder="Enter user name used to commit" autocomplete="off" />
         </div>
       </div>
       <div class="row mt-2 justify-content-center">

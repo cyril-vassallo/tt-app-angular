@@ -27,6 +27,7 @@ export class GithubComponent implements OnInit {
     repository: new FormControl(''),
     branch: new FormControl(''),
     token: new FormControl(''),
+    committer: new FormControl(''),
     enabled: new FormControl(false),
   });
 
@@ -85,6 +86,7 @@ export class GithubComponent implements OnInit {
         repository: this.githubState.repository ?? '',
         branch: this.githubState.branch ?? '',
         token: this.githubState.token ?? '',
+        committer: this.githubState.committer ?? '',
         enabled: this.githubState.enabled ?? false,
       });
     }
@@ -134,6 +136,7 @@ export class GithubComponent implements OnInit {
       repository: this.githubForm.controls.repository.value!,
       branch: this.githubForm.controls.branch.value!,
       token: this.githubForm.controls.token.value!,
+      committer: this.githubForm.controls.committer.value!,
       enabled: this.githubForm.controls.enabled.value!,
     };
 
@@ -151,6 +154,7 @@ export class GithubComponent implements OnInit {
             owner: this.githubForm.controls.owner.value!,
             repository: this.githubForm.controls.repository.value!,
             branch: this.githubForm.controls.branch.value!,
+            committer: this.githubForm.controls.committer.value!,
             token: this.githubForm.controls.token.value!,
           };
 
