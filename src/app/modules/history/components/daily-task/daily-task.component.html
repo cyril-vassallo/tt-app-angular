@@ -3,7 +3,7 @@
     <div class="row align-items-center">
       <div class="app-task-head-item-left col-md-6">
         <div class="m-2">
-          <img *ngIf="getUser().photo" src="assets/images/{{ getUser().photo }}.jpg" class="card-img-top"
+          <img *ngIf="getUser().photo" src="{{ getUser().photo }}" class="card-img-top"
             alt="this person do not exist" />
         </div>
         <div *ngIf="getUser().firstName">
