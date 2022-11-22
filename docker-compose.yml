@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app-angular:
-    image: "node:14.15.5"
+    image: "node:14.20"
     container_name: app-angular
     working_dir: /usr/www/app
     env_file:

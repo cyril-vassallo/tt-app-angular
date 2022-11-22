@@ -16,6 +16,12 @@ export interface MetaInterface {
   uri: string;
 }
 
+export interface FileUrlDataInterface {
+  url?: string;
+  code: number;
+  message: string;
+}
+
 export interface GithubInterface {
   id?: string;
   user?: string;

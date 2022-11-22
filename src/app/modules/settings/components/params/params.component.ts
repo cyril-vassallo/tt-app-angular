@@ -36,6 +36,7 @@ export class ParamsComponent implements OnInit, OnDestroy {
   isTodayTaskClearing: boolean = false;
   isAllAppTasksClearing: boolean = false;
   subscriptions: Subscription = new Subscription();
+  photoUrl: string = '';
 
   // ----- Component lifecycle methods ----- //
 
@@ -67,7 +68,7 @@ export class ParamsComponent implements OnInit, OnDestroy {
       email: this.userForm.controls.email.value!,
       job: this.userForm.controls.job.value!,
       description: this.userForm.controls.description.value!,
-      photo: this.user?.photo!,
+      photo: this.photoUrl,
     };
 
     this.subscriptions = this.userService
@@ -129,5 +130,11 @@ export class ParamsComponent implements OnInit, OnDestroy {
           }
         })
     );
+  }
+
+  onPhotoUrlReceived(url: string): void {
+    if (url) {
+      this.photoUrl = url;
+    }
   }
 }

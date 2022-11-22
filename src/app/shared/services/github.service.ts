@@ -4,6 +4,7 @@ import { constant } from '../../../config/config';
 import { UserInterface, GithubInterface } from '../interfaces/interfaces';
 import { map, Observable } from 'rxjs';
 import { catchError, of } from 'rxjs';
+import { GithubAndMeta } from '../types/types';
 
 @Injectable()
 export class GithubService {

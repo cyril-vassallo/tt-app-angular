@@ -4,110 +4,61 @@
   </div>
   <div class="row">
     <div class="col-lg-6">
-      <form
-      [formGroup]="userForm"
-      (ngSubmit)="onUserFormSubmit()"
-      class="col mb-3"
-    >
-      <h2 class="fs-4 fw-semibold text-secondary">Your personal information</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()" class="col mb-3">
+        <h2 class="fs-4 fw-semibold text-secondary">Your personal information</h2>
 
-      <div class="form-group mt-2">
-        <label for="firstName" class="form-label"> First name</label>
-        <input
-          formControlName="firstName"
-          type="text"
-          class="form-control"
-          id="firstName"
-          placeholder="Change your first name"
-        />
-      </div>
+        <div class="form-group mt-2">
+          <label for="firstName" class="form-label"> First name</label>
+          <input formControlName="firstName" type="text" class="form-control" id="firstName"
+            placeholder="Change your first name" />
+        </div>
 
-      <div class="form-group mt-2">
-        <label for="lastName" class="form-label"> Last name</label>
-        <input
-          formControlName="lastName"
-          type="text"
-          class="form-control"
-          id="lastName"
-          placeholder="Change your last name"
-        />
-      </div>
+        <div class="form-group mt-2">
+          <label for="lastName" class="form-label"> Last name</label>
+          <input formControlName="lastName" type="text" class="form-control" id="lastName"
+            placeholder="Change your last name" />
+        </div>
 
-      <div class="form-group mt-2">
-        <label for="email" class="form-label"> Email</label>
-        <input
-          formControlName="email"
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Change your email"
-        />
-      </div>
+        <div class="form-group mt-2">
+          <label for="email" class="form-label"> Email</label>
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="Change your email" />
+        </div>
 
-      <div class="form-group mt-2">
-        <label for="job" class="form-label">Job</label>
-        <input
-          formControlName="job"
-          type="text"
-          class="form-control"
-          id="job"
-          placeholder="Change your job"
-        />
-      </div>
+        <div class="form-group mt-2">
+          <label for="job" class="form-label">Job</label>
+          <input formControlName="job" type="text" class="form-control" id="job" placeholder="Change your job" />
+        </div>
 
-      <div class="form-group mt-2">
-        <label for="description" class="form-label">Description</label>
-        <textarea
-          formControlName="description"
-          type="text"
-          class="form-control"
-          id="description"
-          placeholder="Change your description"
-        ></textarea>
-      </div>
+        <div class="form-group mt-2">
+          <label for="description" class="form-label">Description</label>
+          <textarea formControlName="description" type="text" class="form-control" id="description"
+            placeholder="Change your description"></textarea>
+        </div>
 
-      <div class="form-group mt-2">
-        <label for="photo" class="form-label">Photo</label>
-        <input
-          formControlName="photo"
-          class="form-control"
-          type="file"
-          id="photo"
-          placeholder="Change your photo"
-        />
-      </div>
+        <input-file-upload (onPhotoUrlReceivedEvent)="onPhotoUrlReceived($event)"></input-file-upload>
 
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary w-50 my-5">
-          <span *ngIf="!isUserUpdated; else updateUserTemplate">Update</span>
-        </button>
-        <ng-template #updateUserTemplate
-          ><span>
-            Updating...
-            <app-loader></app-loader>
-          </span>
-        </ng-template>
-      </div>
-    </form>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-50 my-5">
+            <span *ngIf="!isUserUpdated; else updateUserTemplate">Update</span>
+          </button>
+          <ng-template #updateUserTemplate><span>
+              Updating...
+              <app-loader></app-loader>
+            </span>
+          </ng-template>
+        </div>
+      </form>
 
     </div>
-    
+
     <div class="col-lg-4 mb-3 container">
       <h2 class="fs-4 fw-semibold text-secondary">App settings</h2>
       <div class="row mt-2">
         <label class="col form-label">Clear today history:</label>
-        <button
-          (click)="onClearTodayTasksClick()"
-          type="button"
-          href="#"
-          class="col btn btn-sm btn-info mx-5"
-        >
-          <span *ngIf="!isTodayTaskClearing; else clearTodayTemplate"
-            >Clear</span
-          >
+        <button (click)="onClearTodayTasksClick()" type="button" href="#" class="col btn btn-sm btn-info mx-5">
+          <span *ngIf="!isTodayTaskClearing; else clearTodayTemplate">Clear</span>
         </button>
-        <ng-template #clearTodayTemplate
-          ><span>
+        <ng-template #clearTodayTemplate><span>
             Clearing...
             <app-loader></app-loader>
           </span>
@@ -115,18 +66,10 @@
       </div>
       <div class="row mt-2">
         <label class="col form-label">Clear user history:</label>
-        <button
-          (click)="onClearHistoryClick()"
-          type="button"
-          href="#"
-          class="col btn btn-sm btn-warning mx-5"
-        >
-          <span *ngIf="!isHistoryClearing; else clearHistoryTemplate"
-            >Clear</span
-          >
+        <button (click)="onClearHistoryClick()" type="button" href="#" class="col btn btn-sm btn-warning mx-5">
+          <span *ngIf="!isHistoryClearing; else clearHistoryTemplate">Clear</span>
         </button>
-        <ng-template #clearHistoryTemplate
-          ><span>
+        <ng-template #clearHistoryTemplate><span>
             Clearing...
             <app-loader></app-loader>
           </span>
@@ -134,18 +77,10 @@
       </div>
       <div class="row mt-2">
         <label class="col form-label">Clear app history (Admin):</label>
-        <button
-          (click)="onClearAllAppTasksClick()"
-          type="button"
-          href="#"
-          class="col btn btn-sm btn-danger mx-5"
-        >
-          <span *ngIf="!isAllAppTasksClearing; else clearAllAppTasksTemplate"
-            >Clear</span
-          >
+        <button (click)="onClearAllAppTasksClick()" type="button" href="#" class="col btn btn-sm btn-danger mx-5">
+          <span *ngIf="!isAllAppTasksClearing; else clearAllAppTasksTemplate">Clear</span>
         </button>
-        <ng-template #clearAllAppTasksTemplate
-          ><span>
+        <ng-template #clearAllAppTasksTemplate><span>
             Clearing...
             <app-loader></app-loader>
           </span>

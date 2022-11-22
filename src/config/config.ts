@@ -14,6 +14,7 @@ export const constant = {
   USER: '/user',
   TASK: '/task',
   GITHUB: '/github',
+  FILE: '/file/upload',
 };
 
 if (environment.production) {

@@ -6,13 +6,12 @@ import {
 import { TaskService } from '../../../shared/services/task.service';
 import { UserService } from '../../../shared/services/user.service';
 import { GithubService } from '../../../shared/services/github.service';
-import { Subscription, tap } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TaskInterface } from '../../../shared/interfaces/interfaces';
 import { TasksAndMeta } from '../../../shared/types/types';
 import format from 'date-fns/format';
 import { FormatService } from '../../../shared/services/format.service';
-import { LoginComponent } from '../components/login/login.component';
 
 @Component({
   selector: 'app-my-history',

@@ -1,6 +1,5 @@
 <div *ngIf="user !== null" class="d-flex justify-content-center flex-column app-profile m-5">
-  <img src="assets/images/{{ user.photo }}.jpg" class="card-img-top" alt="this person do not exist"
-    (click)="onUserProfileClick()" />
+  <img src="{{ user.photo }}" class="card-img-top" alt="this person do not exist" (click)="onUserProfileClick()" />
   <div class="m-auto text-center">
     <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
     <p class="card-title-2 text-warning">{{ user.job }}</p>

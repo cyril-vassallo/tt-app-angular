@@ -1,8 +1,11 @@
+@import '../../../../app.component.scss';
+
 .app-profile {
   img {
     border-radius: 50%;
     width: 15rem;
     align-self: center;
+    max-height: $profile-avatar-max-size;
   }
   .card-title-2 {
     font-size: 3rem;

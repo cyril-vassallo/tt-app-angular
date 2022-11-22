@@ -1,0 +1,14 @@
+<div class="app-attachment">
+  <label for="photo" class="form-label">Photo</label>
+  <input id="photo" type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+  <div class="file-upload">
+
+    {{fileName || "No file uploaded yet."}}
+
+    <button class="btn btn-primary app-attachment-btn" (click)="fileUpload.click()">
+      <mat-icon>attach_file</mat-icon>
+    </button>
+
+  </div>
+</div>
