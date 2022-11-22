@@ -7,6 +7,8 @@ import { ParamsComponent } from './components/params/params.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FileService } from 'src/app/shared/services/file.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const components = [
   MySettingsComponent,
@@ -18,7 +20,7 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [CoreModule, MatIconModule],
+  imports: [CoreModule, MatIconModule, MatButtonModule, MatSlideToggleModule],
   providers: [FileService],
 })
 export class SettingsModule {}

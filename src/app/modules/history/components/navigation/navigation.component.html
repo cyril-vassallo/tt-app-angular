@@ -1,4 +1,4 @@
-<nav class="navigation-bar bg-light" [hidden]="!isAuth">
+<!-- <nav class="navigation-bar bg-light">
   <div class="nav-burger text-secondary" (click)="onBurgerClick()">
     Navigation
   </div>
@@ -17,4 +17,20 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<mat-toolbar color="primary" [hidden]="!isAuth">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My History</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+    routerLink="/my-settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+    (click)="onLogoutClick()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

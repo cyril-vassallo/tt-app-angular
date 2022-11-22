@@ -10,6 +10,9 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 import { TeamComponent } from './components/team/team.component';
 import { FormButtonComponent } from './components/buttons/form-button.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 const components = [
   MyHistoryComponent,
@@ -25,7 +28,7 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [CoreModule],
+  imports: [CoreModule, MatButtonModule, MatToolbarModule, MatIconModule],
   providers: [NavigationService],
 })
 export class HistoryModule {}

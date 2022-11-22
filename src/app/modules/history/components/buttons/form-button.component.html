@@ -1,11 +1,10 @@
 <div *ngIf="!isFormDisplayed"
   class="app-action-buttons-component container d-flex justify-content-center flex-wrap my-5">
-  <button *ngIf="!disabledSate; else noEdition" (click)="onOpenFormClick()"
-    [ngClass]="{ btn: true, 'btn-warning': true, 'btn-lg': true }" class="app-action-button m-auto app-open-form mb-2">
+  <button mat-raised-button color="primary" *ngIf="!disabledSate; else noEdition" (click)="onOpenFormClick()"
+    class="app-action-button m-auto app-open-form mb-2">
     <span>{{ buttonTextOpenForm }}</span>
   </button>
-  <button *ngIf="!disabledSate;" (click)="onSyncGithubClick()"
-    [ngClass]="{ 'btn': true, 'btn-warning': true, 'btn-lg': true }"
+  <button mat-raised-button color="primary" *ngIf="!disabledSate;" (click)="onSyncGithubClick()"
     class="app-action-button m-auto app-open-form mb-2">
     <span>{{ buttonTextSyncGithub }}</span>
   </button>

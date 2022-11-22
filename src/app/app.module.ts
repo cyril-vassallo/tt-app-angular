@@ -13,16 +13,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const providers = [UserService, TaskService, GithubService, FormatService];
 
+const modules = [
+  CoreModule,
+  HistoryModule,
+  SettingsModule,
+  ChartsModule,
+  BrowserAnimationsModule,
+];
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    CoreModule,
-    HistoryModule,
-    SettingsModule,
-    ChartsModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [...providers],
+  imports: modules,
+  providers: providers,
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -38,7 +38,7 @@
         <input-file-upload (onPhotoUrlReceivedEvent)="onPhotoUrlReceived($event)"></input-file-upload>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary w-50 my-5">
+          <button mat-raised-button color="primary" class="w-50 my-5">
             <span *ngIf="!isUserUpdated; else updateUserTemplate">Update</span>
           </button>
           <ng-template #updateUserTemplate><span>
@@ -55,8 +55,8 @@
       <h2 class="fs-4 fw-semibold text-secondary">App settings</h2>
       <div class="row mt-2">
         <label class="col form-label">Clear today history:</label>
-        <button (click)="onClearTodayTasksClick()" type="button" href="#" class="col btn btn-sm btn-info mx-5">
-          <span *ngIf="!isTodayTaskClearing; else clearTodayTemplate">Clear</span>
+        <button mat-fab color="primary" (click)="onClearTodayTasksClick()" type="button" href="#" class="mx-5">
+          <mat-icon *ngIf="!isTodayTaskClearing; else clearTodayTemplate">delete</mat-icon>
         </button>
         <ng-template #clearTodayTemplate><span>
             Clearing...
@@ -66,8 +66,8 @@
       </div>
       <div class="row mt-2">
         <label class="col form-label">Clear user history:</label>
-        <button (click)="onClearHistoryClick()" type="button" href="#" class="col btn btn-sm btn-warning mx-5">
-          <span *ngIf="!isHistoryClearing; else clearHistoryTemplate">Clear</span>
+        <button mat-fab color="accent" (click)="onClearHistoryClick()" type="button" class="mx-5">
+          <mat-icon *ngIf="!isHistoryClearing; else clearHistoryTemplate">delete</mat-icon>
         </button>
         <ng-template #clearHistoryTemplate><span>
             Clearing...
@@ -77,8 +77,8 @@
       </div>
       <div class="row mt-2">
         <label class="col form-label">Clear app history (Admin):</label>
-        <button (click)="onClearAllAppTasksClick()" type="button" href="#" class="col btn btn-sm btn-danger mx-5">
-          <span *ngIf="!isAllAppTasksClearing; else clearAllAppTasksTemplate">Clear</span>
+        <button mat-fab color="warn" (click)="onClearAllAppTasksClick()" type="button" href="#" class=" mx-5">
+          <mat-icon *ngIf="!isAllAppTasksClearing; else clearAllAppTasksTemplate">delete</mat-icon>
         </button>
         <ng-template #clearAllAppTasksTemplate><span>
             Clearing...

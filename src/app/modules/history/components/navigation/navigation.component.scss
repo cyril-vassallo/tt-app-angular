@@ -14,7 +14,7 @@
     .nav-dropdown {
         z-index: 1;
         position:absolute;
-        top: 80px;
+        top: 52px;
         width: 0px;  
         background-color: rgba($color: $color-dark, $alpha: 0.95);
         font-size: 1.5rem;
@@ -43,3 +43,6 @@
         }
     }
  }
+ .example-spacer {
+    flex: 1 1 auto;
+  }
