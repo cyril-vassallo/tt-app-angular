@@ -7,6 +7,12 @@
     align-self: center;
     max-height: $profile-avatar-max-size;
   }
+
+  .card-title {
+    margin: 15px;
+    font-size: 2rem;
+    color: $color-disabled;
+}
   .card-title-2 {
     font-size: 3rem;
   }

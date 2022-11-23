@@ -1,5 +1,9 @@
 <div class="container shadow bg-light my-5 pb-5 app-form-component">
-  <p (click)="onCloseForm()" class="app-cross-close">X</p>
+  <div class="d-flex justify-content-end">
+    <button mat-icon-button (click)="onCloseForm()" class="app-cross-close">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <form class="row bg-primary bg-opacity-50 p-2 m-3 rounded" [formGroup]="taskForm" (ngSubmit)="onTaskFormSubmit()">
     <div class="col-lg-9">
       <label for="taskInput" class="text-light">New task</label>

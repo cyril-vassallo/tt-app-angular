@@ -1,6 +1,13 @@
+@import '../../../../app.component.scss';
+
 .app-settings-github {
     .hide {
         display: none;
+    }
+
+    .card-title {
+        font-size: 2rem;
+        color: $color-disabled;
     }
 
 }
