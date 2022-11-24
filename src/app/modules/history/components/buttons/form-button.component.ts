@@ -18,14 +18,14 @@ export class FormButtonComponent implements OnChanges {
   @Output() onToggleFormEvent = new EventEmitter<void>();
   @Output() onSyncGithubEvent = new EventEmitter<void>();
   @Input() teamPartner!: UserInterface | null;
-  disabledSate: boolean = true;
+  disabledButton: boolean = true;
 
   // ----- Component lifecycle methods ----- //
 
   ngOnChanges(): void {
     this.teamPartner !== null
-      ? (this.disabledSate = true)
-      : (this.disabledSate = false);
+      ? (this.disabledButton = true)
+      : (this.disabledButton = false);
   }
 
   // ----- Component methods----- //
