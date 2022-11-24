@@ -41,6 +41,8 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
 
   todayDateIso: string = '';
 
+  isGitSyncButtonDisplayed: boolean = false;
+
   constructor(
     private taskService: TaskService,
     private userService: UserService,
@@ -131,6 +133,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
           .getGithubByUser(this.userState)
           .subscribe((_observer: GithubInterface | null) => {
             this.githubState = _observer;
+            if (_observer) this.isGitSyncButtonDisplayed = _observer.enabled;
           })
       );
     }
@@ -236,7 +239,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
                   .createTask(newTask)
                   .subscribe((tasks: TasksAndMeta) => {
                     this.tasksState = tasks.data;
-                    //TODO create message popine component
+                    //TODO create message modal component
                     alert(
                       `Sync well done: A new task set for today has been created from github !`
                     );
@@ -247,14 +250,14 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
                   .updateTask(newTask)
                   .subscribe((tasks: TasksAndMeta) => {
                     this.tasksState = tasks.data;
-                    //TODO create message popine component
+                    //TODO create message modal component
                     alert(
                       `Sync well done: The task set for today has been updated from github !`
                     );
                   });
               }
             } else {
-              //TODO create message popine component
+              //TODO create message modal component
               alert(
                 `Not commit found today for the github user:  ${this.githubState?.committer}`
               );

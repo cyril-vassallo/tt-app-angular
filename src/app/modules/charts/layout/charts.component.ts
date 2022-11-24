@@ -107,7 +107,6 @@ export class ChartsComponent implements OnInit {
       ],
     };
 
-    // Todo - ajouter le plugins annotation
     this.reversedMultiLineChart = {
       id: 'reversed-line',
       title: 'Grade by regrouping type on 5 last years',

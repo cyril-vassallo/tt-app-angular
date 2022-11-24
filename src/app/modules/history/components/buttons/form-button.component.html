@@ -2,11 +2,11 @@
   class="app-action-buttons-component container d-flex justify-content-center flex-wrap my-5">
   <button mat-raised-button color="primary" *ngIf="!disabledSate; else noEdition" (click)="onOpenFormClick()"
     class="app-action-button m-auto app-open-form mb-2">
-    <span>{{ buttonTextOpenForm }}</span>
+    <span>Update manually</span>
   </button>
-  <button mat-raised-button color="primary" *ngIf="!disabledSate;" (click)="onSyncGithubClick()"
+  <button *ngIf="isGitSyncButtonDisplayed" mat-raised-button color="primary" (click)="onSyncGithubClick()"
     class="app-action-button m-auto app-open-form mb-2">
-    <span>{{ buttonTextSyncGithub }}</span>
+    <span>Sync with git</span>
   </button>
 </div>
 

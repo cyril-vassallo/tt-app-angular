@@ -14,12 +14,12 @@
   <div *ngIf="isAuthState" id="app-my-history">
     <app-profile [user]="userState" (onLoadUserTasksEvent)="onLoadUserTasks($event)"></app-profile>
     <app-team [users]="usersState" (onTeamPartnerTasksEvent)="onLoadUserTasks($event)"></app-team>
-    <app-form-button [teamPartner]="teamPartnerState" (onToggleFormEvent)="onToggleFormState()"
-      (onSyncGithubEvent)="onSyncGitTasks()" [isFormDisplayed]="formDisplayState"></app-form-button>
+    <app-form-button [isGitSyncButtonDisplayed]="isGitSyncButtonDisplayed" [teamPartner]="teamPartnerState"
+      (onToggleFormEvent)="onToggleFormState()" (onSyncGithubEvent)="onSyncGitTasks()"
+      [isFormDisplayed]="formDisplayState"></app-form-button>
     <app-task-form *ngIf="isFormShouldDisplayed()" [user]="userState" [tasks]="tasksState"
       (onTasksStateEvent)="onTasksStateUpdate($event)" (onCloseFormEvent)="onCloseForm($event)"></app-task-form>
     <app-daily-task [tasks]=" tasksState" [user]="userState" [teamPartner]="teamPartnerState">
     </app-daily-task>
   </div>
-  <!-- TODO update button syncWithGit show/hide when git is not activated -->
 </main>

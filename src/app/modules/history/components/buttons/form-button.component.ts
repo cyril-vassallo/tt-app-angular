@@ -13,9 +13,7 @@ import { UserInterface } from '../../../../shared/interfaces/interfaces';
   styleUrls: ['./form-button.component.scss'],
 })
 export class FormButtonComponent implements OnChanges {
-  // TODO remove inputs for buttons, not used anymore
-  @Input() buttonTextOpenForm: string = 'Update manually';
-  @Input() buttonTextSyncGithub: string = 'Sync with git';
+  @Input() isGitSyncButtonDisplayed: boolean = false;
   @Input() isFormDisplayed: boolean = false;
   @Output() onToggleFormEvent = new EventEmitter<void>();
   @Output() onSyncGithubEvent = new EventEmitter<void>();
