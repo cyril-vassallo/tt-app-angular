@@ -236,6 +236,7 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
                   .createTask(newTask)
                   .subscribe((tasks: TasksAndMeta) => {
                     this.tasksState = tasks.data;
+                    //TODO create message popine component
                     alert(
                       `Sync well done: A new task set for today has been created from github !`
                     );
@@ -246,12 +247,14 @@ export class MyHistoryComponent implements OnInit, OnDestroy {
                   .updateTask(newTask)
                   .subscribe((tasks: TasksAndMeta) => {
                     this.tasksState = tasks.data;
+                    //TODO create message popine component
                     alert(
                       `Sync well done: The task set for today has been updated from github !`
                     );
                   });
               }
             } else {
+              //TODO create message popine component
               alert(
                 `Not commit found today for the github user:  ${this.githubState?.committer}`
               );
