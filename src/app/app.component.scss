@@ -2,3 +2,7 @@
 @import './shared/scss/screen.sizes';
 @import './shared/scss/custom.classes';
 @import './shared/scss/_others.constants';
+
+footer {
+    min-height: 100px;
+}
