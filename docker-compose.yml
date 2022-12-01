@@ -7,11 +7,10 @@ services:
     working_dir: /usr/www/app
     env_file:
       - .env
-      - ../tt-app-angular/.env
     ports:
       - ${PORT:-4200}:${PORT:-4200}
     volumes:
-      - "../tt-app-angular:/usr/www/app/"
+      - "./:/usr/www/app/"
     command: "/bin/sh  install.sh"
     networks:
       - app-fullstack
